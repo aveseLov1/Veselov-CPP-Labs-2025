@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int main() {
+int main(int, char**) {
     int hours, minutes;
 
     cout << "Введите время (часы и минуты через пробел): ";

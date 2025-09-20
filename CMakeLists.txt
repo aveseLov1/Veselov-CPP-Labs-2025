@@ -1,5 +1,5 @@
 # cmake_minimum_required(VERSION 3.10)
-# project(Veselov-CPP-Labs-2025)
+# project(lab_1)
 # find_program(CLANG_FORMAT "clang-format")
 # if(CLANG_FORMAT)
 #     file(GLOB_RECURSE SOURCE_FILES ".cpp" ".h")
@@ -53,21 +53,21 @@
 
 cmake_minimum_required(VERSION 3.20)
 
-project(Example)
+project(lab_1)
 
 # ПЕРЕМЕСТИТЕ эту строку ПОСЛЕ project()
 set(CMAKE_CXX_CLANG_TIDY "clang-tidy")
 
 set(SOURCES
-    ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/lab_1.cpp
 )
 
 # Убедитесь, что HEADERS определен или удалите его
 set(HEADERS "")  # добавьте эту строку если HEADERS не определен
 
-add_executable(Example ${SOURCES})
-set_property(TARGET Example PROPERTY CXX_STANDARD 20)
-target_compile_options(Example PRIVATE -Wall -Wextra -Werror -Wpedantic)
+add_executable(lab_1 ${SOURCES})
+set_property(TARGET lab_1 PROPERTY CXX_STANDARD 20)
+target_compile_options(lab_1 PRIVATE -Wall -Wextra -Werror -Wpedantic)
 
 if(ENABLE_DEBUG)
     target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE -g)
