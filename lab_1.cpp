@@ -46,34 +46,30 @@ int main(int, char**) {
 
     std::cout << display_hours << " ";
 
-    (display_hours == singular_hour_1 || display_hours == singular_hour_21)
-        ? std::cout << "час"
-        : ((display_hours >= plural_hours_min && display_hours <= plural_hours_max) ||
-           (display_hours >= plural_hours_min_2 && display_hours <= plural_hours_max_2))
-            ? std::cout << "часа"
-            : std::cout << "часов";
+    (display_hours == singular_hour_1 || display_hours == singular_hour_21) ? std::cout << "час"
+    : ((display_hours >= plural_hours_min && display_hours <= plural_hours_max) ||
+       (display_hours >= plural_hours_min_2 && display_hours <= plural_hours_max_2))
+        ? std::cout << "часа"
+        : std::cout << "часов";
 
     if (minutes != min_minutes) {
         std::cout << " " << minutes << " ";
-        (minutes % modulo_base == singular_hour_1 && minutes != minutes_exception_11)
-            ? std::cout << "минута"
-            : ((minutes % modulo_base >= plural_hours_min && minutes % modulo_base <= plural_hours_max) &&
-               (minutes < minutes_small_threshold || minutes > minutes_large_threshold))
-                ? std::cout << "минуты"
-                : std::cout << "минут";
+        (minutes % modulo_base == singular_hour_1 && minutes != minutes_exception_11) ? std::cout << "минута"
+        : ((minutes % modulo_base >= plural_hours_min && minutes % modulo_base <= plural_hours_max) &&
+           (minutes < minutes_small_threshold || minutes > minutes_large_threshold))
+            ? std::cout << "минуты"
+            : std::cout << "минут";
         std::cout << " ";
-        (hours >= morning_start && hours < afternoon_start)
-            ? std::cout << "утра"
-            : (hours >= afternoon_start && hours < evening_start) ? std::cout << "дня"
-            : (hours >= evening_start)                            ? std::cout << "вечера"
-                                                                  : std::cout << "ночи";
+        (hours >= morning_start && hours < afternoon_start)   ? std::cout << "утра"
+        : (hours >= afternoon_start && hours < evening_start) ? std::cout << "дня"
+        : (hours >= evening_start)                            ? std::cout << "вечера"
+                                                              : std::cout << "ночи";
     } else {
         std::cout << " ";
-        (hours >= morning_start && hours < afternoon_start)
-            ? std::cout << "утра"
-            : (hours >= afternoon_start && hours < evening_start) ? std::cout << "дня"
-            : (hours >= evening_start)                            ? std::cout << "вечера"
-                                                                  : std::cout << "ночи";
+        (hours >= morning_start && hours < afternoon_start)   ? std::cout << "утра"
+        : (hours >= afternoon_start && hours < evening_start) ? std::cout << "дня"
+        : (hours >= evening_start)                            ? std::cout << "вечера"
+                                                              : std::cout << "ночи";
         std::cout << " ровно";
     }
 
