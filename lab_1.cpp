@@ -24,30 +24,26 @@ int main(int, char**) {
 
     std::cout << display_hours << " ";
 
-    (display_hours == 1 || display_hours == 21) ? std::cout << "час"
-    : ((display_hours >= 2 && display_hours <= 4) ||
-       (display_hours >= 22 && display_hours <= 23))
-        ? std::cout << "часа"
-        : std::cout << "часов";
+    (display_hours == 1 || display_hours == 21)                                                    ? std::cout << "час"
+    : ((display_hours >= 2 && display_hours <= 4) || (display_hours >= 22 && display_hours <= 23)) ? std::cout << "часа"
+                                                                                                   : std::cout << "часов";
 
     if (minutes != 0) {
         std::cout << " " << minutes << " ";
-        (minutes % 10 == 1 && minutes != 11) ? std::cout << "минута"
-        : ((minutes % 10 >= 2 && minutes % 10 <= 4) &&
-           (minutes < 10 || minutes > 20))
-            ? std::cout << "минуты"
-            : std::cout << "минут";
+        (minutes % 10 == 1 && minutes != 11)                                           ? std::cout << "минута"
+        : ((minutes % 10 >= 2 && minutes % 10 <= 4) && (minutes < 10 || minutes > 20)) ? std::cout << "минуты"
+                                                                                       : std::cout << "минут";
         std::cout << " ";
-        (hours >= 5 && hours < 12) ? std::cout << "утра"
+        (hours >= 5 && hours < 12)    ? std::cout << "утра"
         : (hours >= 12 && hours < 18) ? std::cout << "дня"
-        : (hours >= 18) ? std::cout << "вечера"
-                        : std::cout << "ночи";
+        : (hours >= 18)               ? std::cout << "вечера"
+                                      : std::cout << "ночи";
     } else {
         std::cout << " ";
-        (hours >= 5 && hours < 12) ? std::cout << "утра"
+        (hours >= 5 && hours < 12)    ? std::cout << "утра"
         : (hours >= 12 && hours < 18) ? std::cout << "дня"
-        : (hours >= 18) ? std::cout << "вечера"
-                        : std::cout << "ночи";
+        : (hours >= 18)               ? std::cout << "вечера"
+                                      : std::cout << "ночи";
         std::cout << " ровно";
     }
 
@@ -55,7 +51,6 @@ int main(int, char**) {
 
     return 0;
 }
-
 
 // #include <iostream>
 
@@ -113,9 +108,6 @@ int main(int, char**) {
 
 //     return 0;
 // }
-
-
-
 
 // #include <iostream>
 
