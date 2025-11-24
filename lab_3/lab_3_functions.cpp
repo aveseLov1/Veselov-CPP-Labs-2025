@@ -6,7 +6,7 @@
 
 namespace EquationSolver {
 
-namespace {
+//namespace {
     constexpr int MAX_ITERATIONS = 100000;
 
     void clearInputBuffer() {
@@ -32,7 +32,7 @@ namespace {
         std::cout << "Количество итераций: " << iterations << "\n";
         std::cout << "Значение функции в корне: " << function(root, 1.0) << "\n\n";
     }
-}
+//}
 
 void runApplication() {
     std::cout << "=== Решение уравнения x - k*cos(x) = 0 ===\n\n";
