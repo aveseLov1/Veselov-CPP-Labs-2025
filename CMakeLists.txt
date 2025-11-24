@@ -53,35 +53,37 @@
 
 cmake_minimum_required(VERSION 3.20)
 
-project(lab_1)
+project(lab_3)
 
 # ПЕРЕМЕСТИТЕ эту строку ПОСЛЕ project()
-# set(CMAKE_CXX_CLANG_TIDY "clang-tidy")
+set(CMAKE_CXX_CLANG_TIDY "clang-tidy")
 
 set(SOURCES
-    ${CMAKE_CURRENT_SOURCE_DIR}/lab_1.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/lab_3/main.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/lab_3/lab_3_functions.cpp
+
 )
 
 # Убедитесь, что HEADERS определен или удалите его
-set(HEADERS "")  # добавьте эту строку если HEADERS не определен
+set(HEADERS   # добавьте эту строку если HEADERS не определен
+    ${CMAKE_CURRENT_SOURCE_DIR}/lab_3/lab_3_functions.h
+)
 
-add_executable(lab_1 ${SOURCES})
-set_property(TARGET lab_1 PROPERTY CXX_STANDARD 20)
-target_compile_options(lab_1 PRIVATE -Wall -Wextra -Werror -Wpedantic)
+add_executable(lab_3 ${SOURCES})
+set_property(TARGET lab_3 PROPERTY CXX_STANDARD 20)
+target_compile_options(lab_3 PRIVATE -Wall -Wextra -Werror -Wpedantic)
 
 if(ENABLE_DEBUG)
-    target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE -g)
+    target_compile_options(${lab_3} PRIVATE -g)
 endif()
 
 
 
 add_custom_target(
-    clang-format off
-    COMMAND clang-format off
+    clang-format
+    COMMAND clang-format
     --dry-run
     -Werror
     ${SOURCES}
 
 )
-
-

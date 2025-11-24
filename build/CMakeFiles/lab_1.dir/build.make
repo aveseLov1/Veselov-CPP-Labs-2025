@@ -73,7 +73,7 @@ CMakeFiles/lab_1.dir/lab_1.cpp.o: CMakeFiles/lab_1.dir/flags.make
 CMakeFiles/lab_1.dir/lab_1.cpp.o: /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/lab_1.cpp
 CMakeFiles/lab_1.dir/lab_1.cpp.o: CMakeFiles/lab_1.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/artem/For_BMSTU/Veselov-CPP-Labs-2025/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/lab_1.dir/lab_1.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lab_1.dir/lab_1.cpp.o -MF CMakeFiles/lab_1.dir/lab_1.cpp.o.d -o CMakeFiles/lab_1.dir/lab_1.cpp.o -c /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/lab_1.cpp
+	$(CMAKE_COMMAND) -E __run_co_compile --tidy="clang-tidy;--extra-arg-before=--driver-mode=g++" --source=/home/artem/For_BMSTU/Veselov-CPP-Labs-2025/lab_1.cpp -- /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lab_1.dir/lab_1.cpp.o -MF CMakeFiles/lab_1.dir/lab_1.cpp.o.d -o CMakeFiles/lab_1.dir/lab_1.cpp.o -c /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/lab_1.cpp
 
 CMakeFiles/lab_1.dir/lab_1.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/lab_1.dir/lab_1.cpp.i"
