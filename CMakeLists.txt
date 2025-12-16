@@ -1,5 +1,5 @@
 # cmake_minimum_required(VERSION 3.10)
-# project(lab_1)
+# project(lab_2)
 # find_program(CLANG_FORMAT "clang-format")
 # if(CLANG_FORMAT)
 #     file(GLOB_RECURSE SOURCE_FILES ".cpp" ".h")
@@ -53,13 +53,13 @@
 
 cmake_minimum_required(VERSION 3.20)
 
-project(lab_1)
+project(lab_2)
 
 # ПЕРЕМЕСТИТЕ эту строку ПОСЛЕ project()
 # set(CMAKE_CXX_CLANG_TIDY "clang-tidy")
 
 set(SOURCES
-    ${CMAKE_CURRENT_SOURCE_DIR}/lab_1.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/lab_2.cpp
 )
 
 # Убедитесь, что HEADERS определен или удалите его
