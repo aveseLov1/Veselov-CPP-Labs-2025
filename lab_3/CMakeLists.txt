@@ -59,14 +59,14 @@ project(lab_3)
 set(CMAKE_CXX_CLANG_TIDY "clang-tidy")
 
 set(SOURCES
-    ${CMAKE_CURRENT_SOURCE_DIR}/lab_3/main.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/lab_3/lab_3_functions.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/lab_3_functions.cpp
 
 )
 
 # Убедитесь, что HEADERS определен или удалите его
 set(HEADERS   # добавьте эту строку если HEADERS не определен
-    ${CMAKE_CURRENT_SOURCE_DIR}/lab_3/lab_3_functions.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/lab_3_functions.h
 )
 
 add_executable(lab_3 ${SOURCES})

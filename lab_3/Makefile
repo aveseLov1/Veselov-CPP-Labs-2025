@@ -57,7 +57,7 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/artem/For_BMSTU/Veselov-CPP-Labs-2025
+CMAKE_SOURCE_DIR = /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/lab_3
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/lab_3
