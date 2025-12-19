@@ -1,6 +1,6 @@
+#include <iostream>
 #include <termios.h>
 #include <unistd.h>
-#include <iostream>
 
 int main() {
     // Сохраняем текущие настройки терминала
@@ -25,8 +25,8 @@ int main() {
 
         // Если точка - завершаем СРАЗУ
         if (c == '.') {
-            std::cout.put('.');   // Выводим точку на экран
-            std::cout.put('\n');  // Переход на новую строку
+            std::cout.put('.');  // Выводим точку на экран
+            std::cout.put('\n'); // Переход на новую строку
             if (in_word) {
                 lengths[count - 1] = pos;
             }
@@ -47,7 +47,7 @@ int main() {
 
         // Английские буквы
         if (c >= 'a' && c <= 'z') {
-            std::cout.put(c);  // Выводим букву на экран
+            std::cout.put(c); // Выводим букву на экран
             if (!in_word) {
                 in_word = true;
                 count++;
@@ -60,7 +60,7 @@ int main() {
 
         // Пробел
         if (c == ' ') {
-            std::cout.put(' ');  // Выводим пробел на экран
+            std::cout.put(' '); // Выводим пробел на экран
             if (in_word) {
                 lengths[count - 1] = pos;
                 in_word = false;
@@ -116,8 +116,9 @@ int main() {
             }
 
             if (occurrences == 1) {
-                if (!first)
+                if (!first) {
                     std::cout.put(' ');
+                }
                 for (int j = 0; j < lengths[i]; j++) {
                     std::cout.put(words[i][j]);
                 }
