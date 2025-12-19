@@ -1,6 +1,6 @@
-#include <iostream>
 #include <termios.h>
 #include <unistd.h>
+#include <iostream>
 
 int main() {
     // Сохраняем текущие настройки терминала
@@ -25,8 +25,8 @@ int main() {
 
         // Если точка - завершаем СРАЗУ
         if (c == '.') {
-            std::cout.put('.');  // Выводим точку на экран
-            std::cout.put('\n'); // Переход на новую строку
+            std::cout.put('.');   // Выводим точку на экран
+            std::cout.put('\n');  // Переход на новую строку
             if (in_word) {
                 lengths[count - 1] = pos;
             }
@@ -96,8 +96,7 @@ int main() {
         bool different = false;
         if (lengths[i] != last_len) {
             different = true;
-        }
-        else {
+        } else {
             for (int j = 0; j < lengths[i]; j++) {
                 if (words[i][j] != last_word[j]) {
                     different = true;
@@ -117,7 +116,8 @@ int main() {
             }
 
             if (occurrences == 1) {
-                if (!first) std::cout.put(' ');
+                if (!first)
+                    std::cout.put(' ');
                 for (int j = 0; j < lengths[i]; j++) {
                     std::cout.put(words[i][j]);
                 }
