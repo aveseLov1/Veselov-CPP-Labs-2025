@@ -1,6 +1,6 @@
+#include <stdio.h>
 #include <termios.h>
 #include <unistd.h>
-#include <iostream>
 
 int main() {
     // Сохраняем текущие настройки терминала
@@ -16,40 +16,43 @@ int main() {
     int lengths[1000];
     int count = 0;
     int pos = 0;
-    bool in_word = false;
+    int in_word = 0;
 
-    std::cout << "Введите текст: ";
+    // Выводим приглашение
+    const char* prompt = "Введите текст: ";
+    for (int i = 0; prompt[i] != '\0'; i++) {
+        putchar(prompt[i]);
+    }
 
-    while (true) {
-        char c = std::cin.get();
+    while (1) {
+        char c = getchar();
 
         // Если точка - завершаем СРАЗУ
         if (c == '.') {
-            std::cout.put('.');   // Выводим точку на экран
-            std::cout.put('\n');  // Переход на новую строку
+            putchar('.');
+            putchar('\n');
             if (in_word) {
                 lengths[count - 1] = pos;
             }
             break;
         }
 
-        // Backspace (ASCII 127 в Linux/Mac, 8 в некоторых системах)
+        // Backspace
         if (c == 127 || c == 8) {
             if (in_word && pos > 0) {
                 pos--;
-                // В небуферизованном режиме нужно стереть символ с экрана
-                std::cout.put('\b');
-                std::cout.put(' ');
-                std::cout.put('\b');
+                putchar('\b');
+                putchar(' ');
+                putchar('\b');
             }
             continue;
         }
 
         // Английские буквы
         if (c >= 'a' && c <= 'z') {
-            std::cout.put(c);  // Выводим букву на экран
+            putchar(c);
             if (!in_word) {
-                in_word = true;
+                in_word = 1;
                 count++;
                 pos = 0;
             }
@@ -60,23 +63,25 @@ int main() {
 
         // Пробел
         if (c == ' ') {
-            std::cout.put(' ');  // Выводим пробел на экран
+            putchar(' ');
             if (in_word) {
                 lengths[count - 1] = pos;
-                in_word = false;
+                in_word = 0;
             }
             continue;
         }
 
-        // Все остальные символы (цифры, русские буквы и т.д.) НЕ ВЫВОДИМ
-        // Просто игнорируем
+        // Все остальные символы игнорируем
     }
 
     // Восстанавливаем настройки терминала
     tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
 
     if (count == 0) {
-        std::cout << "Нет слов для обработки\n";
+        const char* msg = "Нет слов для обработки\n";
+        for (int i = 0; msg[i] != '\0'; i++) {
+            putchar(msg[i]);
+        }
         return 0;
     }
 
@@ -88,18 +93,18 @@ int main() {
     }
 
     // Вывод по условию 8
-    bool first = true;
-    bool has_output = false;
+    int first = 1;
+    int has_output = 0;
 
     for (int i = 0; i < count - 1; i++) {
         // Проверяем, отличается ли от последнего
-        bool different = false;
+        int different = 0;
         if (lengths[i] != last_len) {
-            different = true;
+            different = 1;
         } else {
             for (int j = 0; j < lengths[i]; j++) {
                 if (words[i][j] != last_word[j]) {
-                    different = true;
+                    different = 1;
                     break;
                 }
             }
@@ -117,21 +122,24 @@ int main() {
 
             if (occurrences == 1) {
                 if (!first) {
-                    std::cout.put(' ');
+                    putchar(' ');
                 }
                 for (int j = 0; j < lengths[i]; j++) {
-                    std::cout.put(words[i][j]);
+                    putchar(words[i][j]);
                 }
-                first = false;
-                has_output = true;
+                first = 0;
+                has_output = 1;
             }
         }
     }
 
     if (!has_output) {
-        std::cout << "Нет подходящих слов";
+        const char* msg = "Нет подходящих слов";
+        for (int i = 0; msg[i] != '\0'; i++) {
+            putchar(msg[i]);
+        }
     }
 
-    std::cout.put('\n');
+    putchar('\n');
     return 0;
 }
