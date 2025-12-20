@@ -16,14 +16,14 @@ int main(int argc, char* argv[]) {
         return EXIT_FAILURE;
     }
 
-    try {
-        cipher::Application app;
-        if (!app.initialize({argv[1], argv[2], argv[3], argv[4]})) {
-            return EXIT_FAILURE;
-        }
-        return app.run() ? EXIT_SUCCESS : EXIT_FAILURE;
-    } catch (const std::exception& e) {
-        std::cerr << "Ошибка: " << e.what() << "\n";
-        return EXIT_FAILURE;
-    }
+    // try {
+    //     cipher::Application app;
+    //     if (!app.initialize({argv[1], argv[2], argv[3], argv[4]})) {
+    //         return EXIT_FAILURE;
+    //     }
+    //     return app.run() ? EXIT_SUCCESS : EXIT_FAILURE;
+    // } catch (const std::exception& e) {
+    //     std::cerr << "Ошибка: " << e.what() << "\n";
+    //     return EXIT_FAILURE;
+    // }
 }
