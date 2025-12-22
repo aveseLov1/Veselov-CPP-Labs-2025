@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <iostream>
 #include <termios.h>
 #include <unistd.h>
 
@@ -8,138 +8,170 @@ int main() {
     tcgetattr(STDIN_FILENO, &oldt);
     newt = oldt;
 
-    // Отключаем канонический режим (буферизацию) и эхо
+    // Отключаем канонический режим и эхо
     newt.c_lflag &= ~(ICANON | ECHO);
     tcsetattr(STDIN_FILENO, TCSANOW, &newt);
 
     char words[1000][100];
     int lengths[1000];
-    int count = 0;
+    int word_count = 0;
     int pos = 0;
-    int in_word = 0;
+    bool in_word = false;
 
     // Выводим приглашение
     const char* prompt = "Введите текст: ";
-    for (int i = 0; prompt[i] != '\0'; i++) {
-        putchar(prompt[i]);
+    for (int i = 0; prompt[i] != '\0'; ++i) {
+        std::cout.put(prompt[i]);
     }
 
-    while (1) {
-        char c = getchar();
+    while (true) {
+        char c = std::cin.get();
 
-        // Если точка - завершаем СРАЗУ
+        // Если точка - завершаем ввод
         if (c == '.') {
-            putchar('.');
-            putchar('\n');
+            std::cout.put('.');
+            std::cout.put('\n');
             if (in_word) {
-                lengths[count - 1] = pos;
+                lengths[word_count - 1] = pos;
             }
             break;
         }
 
         // Backspace
         if (c == 127 || c == 8) {
+            // Всегда пытаемся стереть символ на экране
+            std::cout.put('\b');
+            std::cout.put(' ');
+            std::cout.put('\b');
+
+            // Обновляем внутренние структуры данных
             if (in_word && pos > 0) {
-                pos--;
-                putchar('\b');
-                putchar(' ');
-                putchar('\b');
+                // Удаляем букву из текущего слова
+                --pos;
+
+                // Если слово стало пустым
+                if (pos == 0) {
+                    in_word = false;
+                    // Уменьшаем счетчик только если слово было не пустое изначально
+                    if (word_count > 0) {
+                        --word_count;
+                    }
+                }
             }
+            // Если мы между словами (после пробела)
+            else if (!in_word && word_count > 0) {
+                // Возвращаемся к предыдущему слову
+                in_word = true;
+                pos = lengths[word_count - 1];
+                // Здесь НЕ уменьшаем word_count, так как слово уже существует
+            }
+            // Если мы в начале и нет слов, просто игнорируем
+            // (уже стерли символ на экране выше)
             continue;
         }
 
         // Английские буквы
         if (c >= 'a' && c <= 'z') {
-            putchar(c);
+            std::cout.put(c);
+
             if (!in_word) {
-                in_word = 1;
-                count++;
+                in_word = true;
+                ++word_count;
                 pos = 0;
             }
-            words[count - 1][pos] = c;
-            pos++;
+
+            // Сохраняем букву
+            if (pos < 100) {
+                words[word_count - 1][pos] = c;
+                ++pos;
+            }
             continue;
         }
 
         // Пробел
         if (c == ' ') {
-            putchar(' ');
+            std::cout.put(' ');
+
             if (in_word) {
-                lengths[count - 1] = pos;
-                in_word = 0;
+                lengths[word_count - 1] = pos;
+                in_word = false;
             }
             continue;
         }
 
-        // Все остальные символы игнорируем
+        // Остальные символы игнорируем
     }
 
     // Восстанавливаем настройки терминала
     tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
 
-    if (count == 0) {
+    if (word_count == 0) {
         const char* msg = "Нет слов для обработки\n";
-        for (int i = 0; msg[i] != '\0'; i++) {
-            putchar(msg[i]);
+        for (int i = 0; msg[i] != '\0'; ++i) {
+            std::cout.put(msg[i]);
         }
         return 0;
     }
 
-    // Берем последнее слово
+    // Сохраняем последнее слово
     char last_word[100];
-    int last_len = lengths[count - 1];
-    for (int i = 0; i < last_len; i++) {
-        last_word[i] = words[count - 1][i];
+    int last_len = lengths[word_count - 1];
+    for (int i = 0; i < last_len; ++i) {
+        last_word[i] = words[word_count - 1][i];
     }
 
-    // Вывод по условию 8
-    int first = 1;
-    int has_output = 0;
+    // Вывод результата
+    bool first_output = true;
+    bool has_output = false;
 
-    for (int i = 0; i < count - 1; i++) {
+    for (int i = 0; i < word_count - 1; ++i) {
         // Проверяем, отличается ли от последнего
-        int different = 0;
+        bool different = false;
+
         if (lengths[i] != last_len) {
-            different = 1;
+            different = true;
         } else {
-            for (int j = 0; j < lengths[i]; j++) {
+            for (int j = 0; j < lengths[i]; ++j) {
                 if (words[i][j] != last_word[j]) {
-                    different = 1;
+                    different = true;
                     break;
                 }
             }
         }
 
         if (different) {
-            // Проверяем условие: первая буква встречается только 1 раз
+            // Проверяем условие: первая буква встречается ровно 2 раза
             char first_letter = words[i][0];
             int occurrences = 0;
-            for (int j = 0; j < lengths[i]; j++) {
+
+            for (int j = 0; j < lengths[i]; ++j) {
                 if (words[i][j] == first_letter) {
-                    occurrences++;
+                    ++occurrences;
                 }
             }
 
-            if (occurrences == 1) {
-                if (!first) {
-                    putchar(' ');
+            if (occurrences == 2) {
+                if (!first_output) {
+                    std::cout.put(' ');
                 }
-                for (int j = 0; j < lengths[i]; j++) {
-                    putchar(words[i][j]);
+
+                for (int j = 0; j < lengths[i]; ++j) {
+                    std::cout.put(words[i][j]);
                 }
-                first = 0;
-                has_output = 1;
+
+                first_output = false;
+                has_output = true;
             }
         }
     }
 
     if (!has_output) {
         const char* msg = "Нет подходящих слов";
-        for (int i = 0; msg[i] != '\0'; i++) {
-            putchar(msg[i]);
+        for (int i = 0; msg[i] != '\0'; ++i) {
+            std::cout.put(msg[i]);
         }
     }
 
-    putchar('\n');
+    std::cout.put('\n');
     return 0;
 }
