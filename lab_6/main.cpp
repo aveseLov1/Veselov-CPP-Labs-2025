@@ -1,4 +1,4 @@
-#include "integral.h"
+#include "integral.hpp"
 
 using namespace std;
 

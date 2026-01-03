@@ -1,4 +1,4 @@
-#include "integral.h"
+#include "integral.hpp"
 
 // Подынтегральные функции
 double f1(double x) { return x; }
@@ -51,8 +51,6 @@ double integrationByRectangle(TPF f, double a, double b, double eps, int& n) {
         }
         I_curr *= dx;
 
-        // Проверка точности по правилу Рунге
-        // Для метода прямоугольников погрешность ~ I_curr - I_prev
     } while (fabs(I_curr - I_prev) > eps);
 
     return I_curr;
@@ -86,7 +84,6 @@ double integrationByTrapezoidal(TPF f, double a, double b, double eps, int& n) {
         }
         I_curr *= dx;
 
-        // Для метода трапеций погрешность ~ (I_curr - I_prev)/3
     } while (fabs(I_curr - I_prev) > 3*eps);
 
     return I_curr;
@@ -129,10 +126,6 @@ void printTabl(resultToPrint* i_prn, int countRowOfTable) {
     std::strcpy(title[2], "      IntSum      ");
     title[3] = new char[std::strlen("    N     ") + 1];
     std::strcpy(title[3], "    N     ");
-
-    int size[numberOfTableColumns];
-    for (int i = 0; i < numberOfTableColumns; ++i)
-        size[i] = std::strlen(title[i]);
 
     // Верхняя рамка
     std::cout << ul << std::setfill('-');
