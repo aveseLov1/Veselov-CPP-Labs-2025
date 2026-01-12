@@ -1,2 +1,2 @@
-# Empty dependencies file for lab_3.
+# Empty dependencies file for lab_4.
 # This may be replaced when dependencies are built.

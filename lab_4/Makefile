@@ -57,7 +57,7 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/artem/For_BMSTU/Veselov-CPP-Labs-2025
+CMAKE_SOURCE_DIR = /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/lab_4
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/lab_4
@@ -117,17 +117,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named lab_3
+# Target rules for targets named lab_4
 
 # Build rule for target.
-lab_3: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lab_3
-.PHONY : lab_3
+lab_4: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lab_4
+.PHONY : lab_4
 
 # fast build rule for target.
-lab_3/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_3.dir/build.make CMakeFiles/lab_3.dir/build
-.PHONY : lab_3/fast
+lab_4/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_4.dir/build.make CMakeFiles/lab_4.dir/build
+.PHONY : lab_4/fast
 
 #=============================================================================
 # Target rules for targets named clang-format
@@ -142,53 +142,53 @@ clang-format/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/clang-format.dir/build.make CMakeFiles/clang-format.dir/build
 .PHONY : clang-format/fast
 
-lab_3/lab_3_functions.o: lab_3/lab_3_functions.cpp.o
-.PHONY : lab_3/lab_3_functions.o
+main.o: main.cpp.o
+.PHONY : main.o
 
 # target to build an object file
-lab_3/lab_3_functions.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_3.dir/build.make CMakeFiles/lab_3.dir/lab_3/lab_3_functions.cpp.o
-.PHONY : lab_3/lab_3_functions.cpp.o
+main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_4.dir/build.make CMakeFiles/lab_4.dir/main.cpp.o
+.PHONY : main.cpp.o
 
-lab_3/lab_3_functions.i: lab_3/lab_3_functions.cpp.i
-.PHONY : lab_3/lab_3_functions.i
+main.i: main.cpp.i
+.PHONY : main.i
 
 # target to preprocess a source file
-lab_3/lab_3_functions.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_3.dir/build.make CMakeFiles/lab_3.dir/lab_3/lab_3_functions.cpp.i
-.PHONY : lab_3/lab_3_functions.cpp.i
+main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_4.dir/build.make CMakeFiles/lab_4.dir/main.cpp.i
+.PHONY : main.cpp.i
 
-lab_3/lab_3_functions.s: lab_3/lab_3_functions.cpp.s
-.PHONY : lab_3/lab_3_functions.s
+main.s: main.cpp.s
+.PHONY : main.s
 
 # target to generate assembly for a file
-lab_3/lab_3_functions.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_3.dir/build.make CMakeFiles/lab_3.dir/lab_3/lab_3_functions.cpp.s
-.PHONY : lab_3/lab_3_functions.cpp.s
+main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_4.dir/build.make CMakeFiles/lab_4.dir/main.cpp.s
+.PHONY : main.cpp.s
 
-lab_3/main.o: lab_3/main.cpp.o
-.PHONY : lab_3/main.o
+sorting.o: sorting.cpp.o
+.PHONY : sorting.o
 
 # target to build an object file
-lab_3/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_3.dir/build.make CMakeFiles/lab_3.dir/lab_3/main.cpp.o
-.PHONY : lab_3/main.cpp.o
+sorting.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_4.dir/build.make CMakeFiles/lab_4.dir/sorting.cpp.o
+.PHONY : sorting.cpp.o
 
-lab_3/main.i: lab_3/main.cpp.i
-.PHONY : lab_3/main.i
+sorting.i: sorting.cpp.i
+.PHONY : sorting.i
 
 # target to preprocess a source file
-lab_3/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_3.dir/build.make CMakeFiles/lab_3.dir/lab_3/main.cpp.i
-.PHONY : lab_3/main.cpp.i
+sorting.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_4.dir/build.make CMakeFiles/lab_4.dir/sorting.cpp.i
+.PHONY : sorting.cpp.i
 
-lab_3/main.s: lab_3/main.cpp.s
-.PHONY : lab_3/main.s
+sorting.s: sorting.cpp.s
+.PHONY : sorting.s
 
 # target to generate assembly for a file
-lab_3/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_3.dir/build.make CMakeFiles/lab_3.dir/lab_3/main.cpp.s
-.PHONY : lab_3/main.cpp.s
+sorting.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_4.dir/build.make CMakeFiles/lab_4.dir/sorting.cpp.s
+.PHONY : sorting.cpp.s
 
 # Help Target
 help:
@@ -199,13 +199,13 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... clang-format"
-	@echo "... lab_3"
-	@echo "... lab_3/lab_3_functions.o"
-	@echo "... lab_3/lab_3_functions.i"
-	@echo "... lab_3/lab_3_functions.s"
-	@echo "... lab_3/main.o"
-	@echo "... lab_3/main.i"
-	@echo "... lab_3/main.s"
+	@echo "... lab_4"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
+	@echo "... sorting.o"
+	@echo "... sorting.i"
+	@echo "... sorting.s"
 .PHONY : help
 
 

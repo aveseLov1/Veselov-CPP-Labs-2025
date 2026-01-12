@@ -8,8 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/artem/For_BMSTU/Veselov-CPP-Labs-2025/lab_3/lab_3_functions.cpp" "CMakeFiles/lab_3.dir/lab_3/lab_3_functions.cpp.o" "gcc" "CMakeFiles/lab_3.dir/lab_3/lab_3_functions.cpp.o.d"
-  "/home/artem/For_BMSTU/Veselov-CPP-Labs-2025/lab_3/main.cpp" "CMakeFiles/lab_3.dir/lab_3/main.cpp.o" "gcc" "CMakeFiles/lab_3.dir/lab_3/main.cpp.o.d"
+  "/home/artem/For_BMSTU/Veselov-CPP-Labs-2025/lab_4/main.cpp" "CMakeFiles/lab_4.dir/main.cpp.o" "gcc" "CMakeFiles/lab_4.dir/main.cpp.o.d"
+  "/home/artem/For_BMSTU/Veselov-CPP-Labs-2025/lab_4/sorting.cpp" "CMakeFiles/lab_4.dir/sorting.cpp.o" "gcc" "CMakeFiles/lab_4.dir/sorting.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

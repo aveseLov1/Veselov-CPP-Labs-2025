@@ -53,7 +53,7 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/artem/For_BMSTU/Veselov-CPP-Labs-2025
+CMAKE_SOURCE_DIR = /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/lab_4
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/lab_4
@@ -67,7 +67,8 @@ include CMakeFiles/clang-format.dir/compiler_depend.make
 include CMakeFiles/clang-format.dir/progress.make
 
 CMakeFiles/clang-format:
-	clang-format --dry-run -Werror /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/lab_3/main.cpp /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/lab_3/lab_3_functions.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/artem/For_BMSTU/Veselov-CPP-Labs-2025/lab_4/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Проверка форматирования кода"
+	/usr/bin/clang-format --dry-run -Werror main.cpp sorting.cpp sorting.hpp
 
 clang-format: CMakeFiles/clang-format
 clang-format: CMakeFiles/clang-format.dir/build.make
@@ -82,6 +83,6 @@ CMakeFiles/clang-format.dir/clean:
 .PHONY : CMakeFiles/clang-format.dir/clean
 
 CMakeFiles/clang-format.dir/depend:
-	cd /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/lab_4 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/artem/For_BMSTU/Veselov-CPP-Labs-2025 /home/artem/For_BMSTU/Veselov-CPP-Labs-2025 /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/lab_4 /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/lab_4 /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/lab_4/CMakeFiles/clang-format.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/lab_4 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/lab_4 /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/lab_4 /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/lab_4 /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/lab_4 /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/lab_4/CMakeFiles/clang-format.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/clang-format.dir/depend
 

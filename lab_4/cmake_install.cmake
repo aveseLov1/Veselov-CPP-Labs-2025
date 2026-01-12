@@ -1,4 +1,4 @@
-# Install script for directory: /home/artem/For_BMSTU/Veselov-CPP-Labs-2025
+# Install script for directory: /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/lab_4
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
