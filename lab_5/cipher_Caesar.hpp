@@ -13,7 +13,7 @@ enum class MenuOption : int {
     EXIT = 5
 };
 
-constexpr std::size_t MAX_CODE_WORD_LENGTH = 256; // Увеличил для реалистичности
+constexpr std::size_t MAX_CODE_WORD_LENGTH = 256;
 constexpr int ASCII_SIZE = 128;
 constexpr int MAX_WORDS = 1000;
 constexpr int MAX_WORD_LEN = 256;
