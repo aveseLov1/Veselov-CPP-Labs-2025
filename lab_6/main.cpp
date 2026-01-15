@@ -14,10 +14,10 @@ int main() {
     // Массив указателей на функции
     TPF functions[] = { f1, f2, f3, f4 };
     char* func_names[] = {
-        new char[3]{'x', '\0'},
-        new char[10]{'s','i','n','(','2','2','x',')','\0'},
-        new char[6]{'x','^','4','\0'},
-        new char[10]{'a','r','c','t','g','(','x',')','\0'}
+        new char[2]{'x', '\0'},
+        new char[9]{'s','i','n','(','2','2','x',')','\0'},
+        new char[4]{'x','^','4','\0'},
+        new char[9]{'a','r','c','t','g','(','x',')','\0'}
     };
     int num_funcs = 4;
 

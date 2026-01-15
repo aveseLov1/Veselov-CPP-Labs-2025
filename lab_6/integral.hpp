@@ -5,6 +5,7 @@
 #include <iostream>
 #include <iomanip>
 #include <cstring>
+#include <sstream>
 
 // Тип указателя на функцию
 typedef double (*TPF)(double);

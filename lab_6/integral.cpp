@@ -1,4 +1,5 @@
 #include "integral.hpp"
+#include <sstream>
 
 // Подынтегральные функции
 double f1(double x) { return x; }
@@ -92,12 +93,11 @@ double integrationByTrapezoidal(TPF f, double a, double b, double eps, int& n) {
 // Функция для печати таблицы
 namespace {
     const int numberOfTableColumns = 4;
-    const int maxWidthOfTableColumns = 18;
 
-    const int firstColumnWidth = 12;
-    const int secondColumnWidth = 18;
-    const int thirdColumnWidth = 18;
-    const int fourthColumnWidth = 10;
+    const int firstColumnWidth = 10;
+    const int secondColumnWidth = 16;
+    const int thirdColumnWidth = 16;
+    const int fourthColumnWidth = 8;
 
     const char* ul = "┌";
     const char* ur = "┐";
@@ -118,54 +118,87 @@ void printTabl(resultToPrint* i_prn, int countRowOfTable) {
     };
 
     char* title[numberOfTableColumns];
-    title[0] = new char[std::strlen("  Function  ") + 1];
-    std::strcpy(title[0], "  Function  ");
-    title[1] = new char[std::strlen("     Integral     ") + 1];
-    std::strcpy(title[1], "     Integral     ");
-    title[2] = new char[std::strlen("      IntSum      ") + 1];
-    std::strcpy(title[2], "      IntSum      ");
-    title[3] = new char[std::strlen("    N     ") + 1];
-    std::strcpy(title[3], "    N     ");
+    title[0] = new char[std::strlen(" Function ") + 1];
+    std::strcpy(title[0], " Function ");
+    title[1] = new char[std::strlen(" Integral ") + 1];
+    std::strcpy(title[1], " Integral ");
+    title[2] = new char[std::strlen(" IntSum ") + 1];
+    std::strcpy(title[2], " IntSum ");
+    title[3] = new char[std::strlen(" N ") + 1];
+    std::strcpy(title[3], " N ");
 
     // Верхняя рамка
-    std::cout << ul << std::setfill('-');
-    for (int j = 0; j < numberOfTableColumns - 1; ++j)
-        std::cout << std::setw(widthOfTableColumns[j] + 3) << Td;
-    std::cout << std::setw(widthOfTableColumns[numberOfTableColumns - 1] + 3) << ur << std::endl;
+    std::cout << ul;
+    for (int j = 0; j < numberOfTableColumns; ++j) {
+        for (int k = 0; k < widthOfTableColumns[j] + 2; ++k) std::cout << "─";
+        if (j < numberOfTableColumns - 1) std::cout << Td;
+    }
+    std::cout << ur << std::endl;
 
     // Заголовки
     std::cout << vt;
-    for (int j = 0; j < numberOfTableColumns; ++j)
-        std::cout << title[j] << vt;
-    std::cout << std::endl;
+    for (int j = 0; j < numberOfTableColumns; ++j) {
+        // Вычисляем отступы для центрирования
+        int totalSpaces = widthOfTableColumns[j] + 2 - std::strlen(title[j]);
+        int leftSpaces = totalSpaces / 2;
+        int rightSpaces = totalSpaces - leftSpaces;
+
+        std::cout << std::string(leftSpaces, ' ')
+                  << title[j]
+                  << std::string(rightSpaces - 1, ' ');
+    }
+    std::cout << vt << std::endl;
+
+    // Разделитель заголовка и данных
+    std::cout << Tr;
+    for (int j = 0; j < numberOfTableColumns; ++j) {
+        for (int k = 0; k < widthOfTableColumns[j] + 2; ++k) std::cout << "─";
+        if (j < numberOfTableColumns - 1) std::cout << cr;
+    }
+    std::cout << Tl << std::endl;
 
     // Тело таблицы
     for (int i = 0; i < countRowOfTable; ++i) {
-        std::cout << Tr << std::setfill('-');
-        for (int j = 0; j < numberOfTableColumns - 1; ++j)
-            std::cout << std::setw(widthOfTableColumns[j] + 3) << cr;
-        std::cout << std::setw(widthOfTableColumns[numberOfTableColumns - 1] + 3)
-            << Tl << std::setfill(' ') << std::endl;
+        std::cout << vt;
 
-        std::cout << vt
-            << std::setw((widthOfTableColumns[0] - std::strlen(i_prn[i].name)) / 2) << ' '
-            << i_prn[i].name
-            << std::setw((widthOfTableColumns[0] - std::strlen(i_prn[i].name)) / 2) << vt;
+        // Столбец 1: Название функции (центрируем)
+        int func_len = std::strlen(i_prn[i].name);
+        int func_spaces = widthOfTableColumns[0] + 2 - func_len;
+        int func_left = func_spaces / 2;
+        int func_right = func_spaces - func_left;
+        std::cout << std::string(func_left, ' ')
+                  << i_prn[i].name
+                  << std::string(func_right - 1, ' ')
+                  << vt;
 
-        std::cout << std::setw(widthOfTableColumns[1]) << std::setprecision(6)
-            << i_prn[i].i_toch << vt
-            << std::setw(widthOfTableColumns[2])
-            << i_prn[i].i_sum << vt
-            << std::setw(widthOfTableColumns[3])
-            << i_prn[i].n << vt << std::endl;
+        // Столбец 2: Точное значение интеграла
+        std::ostringstream oss1;
+        oss1 << std::fixed << std::setprecision(7) << i_prn[i].i_toch;
+        std::string exact_str = oss1.str();
+        std::cout << " " << std::right << std::setw(widthOfTableColumns[1] + 1)
+                  << exact_str << vt;
+
+        // Столбец 3: Численное значение интеграла
+        std::ostringstream oss2;
+        oss2 << std::fixed << std::setprecision(7) << i_prn[i].i_sum;
+        std::string sum_str = oss2.str();
+        std::cout << " " << std::right << std::setw(widthOfTableColumns[2] + 1)
+                  << sum_str << vt;
+
+        // Столбец 4: Количество разбиений
+        std::cout << " " << std::right << std::setw(widthOfTableColumns[3] + 1)
+                  << i_prn[i].n << vt;
+
+        std::cout << std::endl;
     }
 
     // Нижняя рамка
-    std::cout << dl << std::setfill('-');
-    for (int j = 0; j < numberOfTableColumns - 1; ++j)
-        std::cout << std::setw(widthOfTableColumns[j] + 3) << Tu;
-    std::cout << std::setw(widthOfTableColumns[numberOfTableColumns - 1] + 3)
-        << dr << std::setfill(' ') << std::endl;
+    std::cout << dl;
+    for (int j = 0; j < numberOfTableColumns; ++j) {
+        for (int k = 0; k < widthOfTableColumns[j] + 2; ++k) std::cout << "─";
+        if (j < numberOfTableColumns - 1) std::cout << Tu;
+    }
+    std::cout << dr << std::endl;
 
     // Освобождение памяти
     for (int i = 0; i < numberOfTableColumns; ++i)
