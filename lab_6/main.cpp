@@ -33,7 +33,7 @@ int main() {
 
     for (int e = 0; e < num_eps; e++) {
         double eps = epsilons[e];
-        cout << "\nТочность: " << eps << endl;
+        cout << "\nТочность вычислений: " << eps << endl;
 
         resultToPrint results[4];
         for (int i = 0; i < num_funcs; i++) {
@@ -47,7 +47,7 @@ int main() {
             results[i].n = n;
         }
 
-        printTabl(results, 4);
+        printTabl(results, 4, eps);  // передаем eps в функцию печати
     }
 
     // Метод трапеций
@@ -57,7 +57,7 @@ int main() {
 
     for (int e = 0; e < num_eps; e++) {
         double eps = epsilons[e];
-        cout << "\nТочность: " << eps << endl;
+        cout << "\nТочность вычислений: " << eps << endl;
 
         resultToPrint results[4];
         for (int i = 0; i < num_funcs; i++) {
@@ -71,7 +71,7 @@ int main() {
             results[i].n = n;
         }
 
-        printTabl(results, 4);
+        printTabl(results, 4, eps);  // передаем eps в функцию печати
     }
 
     // Освобождение памяти

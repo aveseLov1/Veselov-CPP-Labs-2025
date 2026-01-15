@@ -1,5 +1,6 @@
 #include "integral.hpp"
 #include <sstream>
+#include <cmath>
 
 // Подынтегральные функции
 double f1(double x) { return x; }
@@ -90,7 +91,7 @@ double integrationByTrapezoidal(TPF f, double a, double b, double eps, int& n) {
     return I_curr;
 }
 
-// Функция для печати таблицы
+// Функция для печати таблицы (ИСПРАВЛЕНА - точность вывода = точности вычислений)
 namespace {
     const int numberOfTableColumns = 4;
 
@@ -111,7 +112,7 @@ namespace {
     const char* Tl = "┤";
 }
 
-void printTabl(resultToPrint* i_prn, int countRowOfTable) {
+void printTabl(resultToPrint* i_prn, int countRowOfTable, double eps) {
     int widthOfTableColumns[numberOfTableColumns] = {
         firstColumnWidth, secondColumnWidth,
         thirdColumnWidth, fourthColumnWidth
@@ -138,7 +139,6 @@ void printTabl(resultToPrint* i_prn, int countRowOfTable) {
     // Заголовки
     std::cout << vt;
     for (int j = 0; j < numberOfTableColumns; ++j) {
-        // Вычисляем отступы для центрирования
         int totalSpaces = widthOfTableColumns[j] + 2 - std::strlen(title[j]);
         int leftSpaces = totalSpaces / 2;
         int rightSpaces = totalSpaces - leftSpaces;
@@ -171,16 +171,40 @@ void printTabl(resultToPrint* i_prn, int countRowOfTable) {
                   << std::string(func_right - 1, ' ')
                   << vt;
 
+        // Определяем количество знаков после запятой на основе epsilon
+        // eps = 0.01 -> 2 знака, eps = 0.001 -> 3 знака, и т.д.
+        int precision;
+        if (eps >= 0.1) {
+            precision = 1;        // eps = 0.1 -> 1 знак
+        } else if (eps >= 0.01) {
+            precision = 2;        // eps = 0.01 -> 2 знака
+        } else if (eps >= 0.001) {
+            precision = 3;        // eps = 0.001 -> 3 знака
+        } else if (eps >= 0.0001) {
+            precision = 4;        // eps = 0.0001 -> 4 знака
+        } else if (eps >= 0.00001) {
+            precision = 5;        // eps = 0.00001 -> 5 знаков
+        } else {
+            precision = 6;        // eps = 0.000001 -> 6 знаков
+        }
+
         // Столбец 2: Точное значение интеграла
+        double exact_val = i_prn[i].i_toch;
         std::ostringstream oss1;
-        oss1 << std::fixed << std::setprecision(7) << i_prn[i].i_toch;
+
+        // Используем нужную точность
+        oss1 << std::fixed << std::setprecision(precision) << exact_val;
+
         std::string exact_str = oss1.str();
         std::cout << " " << std::right << std::setw(widthOfTableColumns[1] + 1)
                   << exact_str << vt;
 
         // Столбец 3: Численное значение интеграла
+        double sum_val = i_prn[i].i_sum;
         std::ostringstream oss2;
-        oss2 << std::fixed << std::setprecision(7) << i_prn[i].i_sum;
+
+        oss2 << std::fixed << std::setprecision(precision) << sum_val;
+
         std::string sum_str = oss2.str();
         std::cout << " " << std::right << std::setw(widthOfTableColumns[2] + 1)
                   << sum_str << vt;

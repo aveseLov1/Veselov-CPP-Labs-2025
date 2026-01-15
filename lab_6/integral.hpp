@@ -37,6 +37,6 @@ double integrationByRectangle(TPF f, double a, double b, double eps, int& n);
 double integrationByTrapezoidal(TPF f, double a, double b, double eps, int& n);
 
 // Функция печати таблицы
-void printTabl(resultToPrint* i_prn, int countRowOfTable);
+void printTabl(resultToPrint* i_prn, int countRowOfTable, double eps);
 
 #endif // INTEGRAL_H
