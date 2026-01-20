@@ -1,55 +1,52 @@
 #include "lab_3_functions.h"
-#include <iostream>
-#include <iomanip>
+
 #include <cmath>
+#include <iomanip>
+#include <iostream>
 #include <limits>
 #include <stdexcept>
 
 namespace EquationSolver {
 
 namespace {
-    constexpr int MAX_ITERATIONS = 100000;
-    constexpr double MIN_DERIVATIVE = 1e-15;
+constexpr int MAX_ITERATIONS = 100000;
+constexpr double MIN_DERIVATIVE = 1e-15;
 
-    void clear_input_buffer() {
-        std::cin.clear();
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    }
-
-    double get_validated_input(const std::string& prompt) {
-        double value;
-        while (true) {
-            std::cout << prompt;
-            if (std::cin >> value) {
-                return value;
-            }
-            std::cout << "Ошибка ввода. Пожалуйста, введите число.\n";
-            clear_input_buffer();
-        }
-    }
-
-    double calculate_tolerance(double epsilon) {
-        return std::pow(10.0, -epsilon);
-    }
-
-    void print_result(const SolutionResult& result,
-                     const std::string& method_name,
-                     double epsilon) {
-        std::cout << "\n=== Результаты метода " << method_name << " ===\n";
-
-        if (!result.success) {
-            std::cout << "Ошибка: " << result.error_message << "\n\n";
-            return;
-        }
-
-        std::cout << "Найденный корень: "
-                  << std::fixed << std::setprecision(static_cast<int>(epsilon))
-                  << result.root << "\n";
-        std::cout << "Количество итераций: " << result.iterations << "\n";
-        std::cout << "Точность вычислений: 10^(-" << epsilon << ")\n\n";
-    }
-
+void clear_input_buffer() {
+    std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
+
+double get_validated_input(const std::string& prompt) {
+    double value;
+    while (true) {
+        std::cout << prompt;
+        if (std::cin >> value) {
+            return value;
+        }
+        std::cout << "Ошибка ввода. Пожалуйста, введите число.\n";
+        clear_input_buffer();
+    }
+}
+
+double calculate_tolerance(double epsilon) {
+    return std::pow(10.0, -epsilon);
+}
+
+void print_result(const SolutionResult& result, const std::string& method_name, double epsilon) {
+    std::cout << "\n=== Результаты метода " << method_name << " ===\n";
+
+    if (!result.success) {
+        std::cout << "Ошибка: " << result.error_message << "\n\n";
+        return;
+    }
+
+    std::cout << "Найденный корень: " << std::fixed << std::setprecision(static_cast<int>(epsilon)) << result.root << "\n";
+    std::cout << "Количество итераций: " << result.iterations << "\n";
+    std::cout << "Точность вычислений: 10^(-" << epsilon << ")\n\n";
+}
+
+}  // namespace
 
 void run_application() {
     std::cout << "=== Решение уравнений численными методами ===\n\n";
@@ -72,8 +69,7 @@ EquationType select_equation_type() {
     while (true) {
         if (std::cin >> choice) {
             auto eq_type = static_cast<EquationType>(choice);
-            if (eq_type == EquationType::X_MINUS_K_COS_X ||
-                eq_type == EquationType::COS_4X_MINUS_HALF_X) {
+            if (eq_type == EquationType::X_MINUS_K_COS_X || eq_type == EquationType::COS_4X_MINUS_HALF_X) {
                 return eq_type;
             }
         }
@@ -105,8 +101,7 @@ SolutionMethod display_menu(EquationType equation_type) {
 
             auto method = static_cast<SolutionMethod>(choice);
 
-            if (method == SolutionMethod::NEWTON &&
-                equation_type == EquationType::COS_4X_MINUS_HALF_X) {
+            if (method == SolutionMethod::NEWTON && equation_type == EquationType::COS_4X_MINUS_HALF_X) {
                 std::cout << "\nОШИБКА: Метод Ньютона ЗАПРЕЩЕН для уравнения cos(4x) - 0.5*x = 0\n";
                 std::cout << "Рекомендуемые методы для этого уравнения: итераций и половинного деления.\n";
                 std::cout << "Пожалуйста, выберите другой метод.\n";
@@ -114,8 +109,7 @@ SolutionMethod display_menu(EquationType equation_type) {
                 continue;
             }
 
-            if ((method >= SolutionMethod::ITERATION && method <= SolutionMethod::NEWTON) ||
-                method == SolutionMethod::EXIT) {
+            if ((method >= SolutionMethod::ITERATION && method <= SolutionMethod::NEWTON) || method == SolutionMethod::EXIT) {
                 return method;
             }
         }
@@ -137,12 +131,8 @@ bool should_continue() {
     return response == 'y' || response == 'Y';
 }
 
-bool is_method_available(
-    EquationType equation_type,
-    SolutionMethod method
-) {
-    if (method == SolutionMethod::NEWTON &&
-        equation_type == EquationType::COS_4X_MINUS_HALF_X) {
+bool is_method_available(EquationType equation_type, SolutionMethod method) {
+    if (method == SolutionMethod::NEWTON && equation_type == EquationType::COS_4X_MINUS_HALF_X) {
         return false;
     }
     return true;
@@ -190,12 +180,7 @@ void solve_equation(EquationType equation_type) {
                     initial_guess = get_validated_input("Введите начальное приближение: ");
                 }
 
-                result = solve_by_iteration(
-                    equation_type,
-                    coefficient,
-                    epsilon,
-                    initial_guess
-                );
+                result = solve_by_iteration(equation_type, coefficient, epsilon, initial_guess);
                 print_result(result, "простой итерации", epsilon);
                 break;
             }
@@ -212,29 +197,16 @@ void solve_equation(EquationType equation_type) {
                 double left = get_validated_input("Введите левую границу интервала: ");
                 double right = get_validated_input("Введите правую границу интервала: ");
 
-                result = solve_by_bisection(
-                    equation_type,
-                    coefficient,
-                    epsilon,
-                    left,
-                    right
-                );
+                result = solve_by_bisection(equation_type, coefficient, epsilon, left, right);
                 print_result(result, "половинного деления", epsilon);
                 break;
             }
 
             case SolutionMethod::NEWTON: {
                 std::cout << "\nДля метода Ньютона:\n";
-                double initial_guess = get_validated_input(
-                    "Введите начальное приближение: "
-                );
+                double initial_guess = get_validated_input("Введите начальное приближение: ");
 
-                result = solve_by_newton(
-                    equation_type,
-                    coefficient,
-                    epsilon,
-                    initial_guess
-                );
+                result = solve_by_newton(equation_type, coefficient, epsilon, initial_guess);
                 print_result(result, "Ньютона", epsilon);
                 break;
             }
@@ -267,12 +239,7 @@ void solve_equation(EquationType equation_type) {
     }
 }
 
-SolutionResult solve_by_iteration(
-    EquationType equation_type,
-    double coefficient,
-    double epsilon,
-    double initial_guess
-) {
+SolutionResult solve_by_iteration(EquationType equation_type, double coefficient, double epsilon, double initial_guess) {
     double tolerance = calculate_tolerance(epsilon);
     double x_prev = initial_guess;
     double x_next;
@@ -323,13 +290,7 @@ SolutionResult solve_by_iteration(
     return result;
 }
 
-SolutionResult solve_by_bisection(
-    EquationType equation_type,
-    double coefficient,
-    double epsilon,
-    double left_bound,
-    double right_bound
-) {
+SolutionResult solve_by_bisection(EquationType equation_type, double coefficient, double epsilon, double left_bound, double right_bound) {
     double tolerance = calculate_tolerance(epsilon);
     SolutionResult result;
 
@@ -384,12 +345,7 @@ SolutionResult solve_by_bisection(
     return result;
 }
 
-SolutionResult solve_by_newton(
-    EquationType equation_type,
-    double coefficient,
-    double epsilon,
-    double initial_guess
-) {
+SolutionResult solve_by_newton(EquationType equation_type, double coefficient, double epsilon, double initial_guess) {
     if (equation_type == EquationType::COS_4X_MINUS_HALF_X) {
         SolutionResult result;
         result.success = false;
@@ -441,11 +397,7 @@ SolutionResult solve_by_newton(
     return result;
 }
 
-double evaluate_equation(
-    EquationType equation_type,
-    double x,
-    double coefficient
-) {
+double evaluate_equation(EquationType equation_type, double x, double coefficient) {
     switch (equation_type) {
         case EquationType::X_MINUS_K_COS_X:
             return x - coefficient * std::cos(x);
@@ -459,11 +411,7 @@ double evaluate_equation(
     }
 }
 
-double evaluate_derivative(
-    EquationType equation_type,
-    double x,
-    double coefficient
-) {
+double evaluate_derivative(EquationType equation_type, double x, double coefficient) {
     switch (equation_type) {
         case EquationType::X_MINUS_K_COS_X:
             return 1.0 + coefficient * std::sin(x);
@@ -476,10 +424,7 @@ double evaluate_derivative(
     }
 }
 
-}
-
-
-
+}  // namespace EquationSolver
 
 // #include "lab_3_functions.h"
 // #include <iostream>
@@ -980,10 +925,6 @@ double evaluate_derivative(
 
 // }
 
-
-
-
-
 // // #include "lab_3_functions.h"
 // // #include <iostream>
 // // #include <iomanip>
@@ -1461,9 +1402,6 @@ double evaluate_derivative(
 
 // // } // namespace EquationSolver
 
-
-
-
 // // // #include "lab_3_functions.h"
 // // // #include <iostream>
 // // // #include <iomanip>
@@ -1915,11 +1853,6 @@ double evaluate_derivative(
 
 // // // } // namespace EquationSolver
 
-
-
-
-
-
 // // // // #include "lab_3_functions.h"
 // // // // #include <iostream>
 // // // // #include <iomanip>
@@ -2366,8 +2299,6 @@ double evaluate_derivative(
 // // // // }
 
 // // // // } // namespace EquationSolver
-
-
 
 // // // // // #include "lab_3_functions.h"
 // // // // // #include <iostream>
