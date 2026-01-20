@@ -5,8 +5,10 @@
 #include <iomanip>
 #include <iostream>
 #include <limits>
+#include <new>  // Добавлено для std::bad_alloc
 #include <random>
 #include <string>
+#include <vector>  // Добавлено для std::vector
 
 namespace {
 
@@ -37,7 +39,7 @@ SortStats selectionSort(T* arr, size_t size, bool ascending = true) {
     SortStats stats;
     auto start = std::chrono::high_resolution_clock::now();
 
-    for (size_t i = 0; i < size - 1; ++i) {
+    for (size_t i = 0; i + 1 < size; ++i) {  // Исправлено: i + 1 < size
         size_t extremeIndex = i;
 
         for (size_t j = i + 1; j < size; ++j) {
@@ -66,10 +68,10 @@ SortStats bubbleSort(T* arr, size_t size, bool ascending = true) {
     auto start = std::chrono::high_resolution_clock::now();
     bool swapped;
 
-    for (size_t i = 0; i < size - 1; ++i) {
+    for (size_t i = 0; i + 1 < size; ++i) {  // Исправлено: i + 1 < size
         swapped = false;
 
-        for (size_t j = 0; j < size - i - 1; ++j) {
+        for (size_t j = 0; j + 1 + i < size; ++j) {  // Исправлено: j + 1 + i < size
             stats.comparisons++;
             if (ascending ? (arr[j] > arr[j + 1]) : (arr[j] < arr[j + 1])) {
                 std::swap(arr[j], arr[j + 1]);
@@ -88,7 +90,7 @@ SortStats bubbleSort(T* arr, size_t size, bool ascending = true) {
     return stats;
 }
 
-// Быстрая сортировка (дополнительное задание)
+// Быстрая сортировка (дополнительное задание) - ИСПРАВЛЕНА
 template<typename T>
 size_t partition(T* arr, size_t low, size_t high, bool ascending, SortStats& stats) {
     T pivot = arr[high];
@@ -101,7 +103,7 @@ size_t partition(T* arr, size_t low, size_t high, bool ascending, SortStats& sta
                 std::swap(arr[i], arr[j]);
                 stats.swaps++;
             }
-            i++;
+            ++i;
         }
     }
 
@@ -118,10 +120,13 @@ void quickSortRecursive(T* arr, size_t low, size_t high, bool ascending, SortSta
     if (low < high) {
         size_t pi = partition(arr, low, high, ascending, stats);
 
-        if (pi > 0) {
+        // КРИТИЧЕСКОЕ ИСПРАВЛЕНИЕ: предотвращение переполнения беззнакового типа
+        if (pi > low) {  // Было: if (pi > 0)
             quickSortRecursive(arr, low, pi - 1, ascending, stats);
         }
-        quickSortRecursive(arr, pi + 1, high, ascending, stats);
+        if (pi + 1 < high) {  // Добавлена проверка для правой части
+            quickSortRecursive(arr, pi + 1, high, ascending, stats);
+        }
     }
 }
 
@@ -148,11 +153,21 @@ void fillRandom(int* arr, size_t size, int min = 0, int max = 99) {
     }
 }
 
-// Копирование массива
+// Копирование массива (ИСПРАВЛЕНО: добавлена проверка выделения памяти)
 int* copyArray(const int* source, size_t size) {
-    int* copy = new int[size];
-    for (size_t i = 0; i < size; ++i) {
-        copy[i] = source[i];
+    if (size == 0) {
+        return nullptr;
+    }
+
+    int* copy = nullptr;
+    try {
+        copy = new int[size];
+        for (size_t i = 0; i < size; ++i) {
+            copy[i] = source[i];
+        }
+    } catch (const std::bad_alloc& e) {
+        std::cerr << "Ошибка выделения памяти для массива размером " << size << ": " << e.what() << std::endl;
+        return nullptr;
     }
     return copy;
 }
@@ -321,22 +336,30 @@ void testStaticArrays() {
     std::cout << std::string(70, '=') << "\n";
 }
 
-// Функция для тестирования на кратных размерах
+// Функция для тестирования на кратных размерах (ИСПРАВЛЕНА)
 void testMultipleSizes(size_t baseSize) {
     std::vector<size_t> sizes;
 
-    // Создаем последовательность: baseSize, baseSize*10, baseSize*100, baseSize*1000
+    // Создаем последовательность с проверкой переполнения
     size_t current = baseSize;
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; ++i) {
         sizes.push_back(current);
-        current *= 10;
+
+        // Проверка перед умножением (исправлено переполнение)
+        if (i < 3) {
+            if (current > SIZE_MAX / 10) {
+                std::cout << "Предупреждение: достигнут максимальный размер, пропуск дальнейшего умножения\n";
+                break;
+            }
+            current *= 10;
+        }
     }
 
     std::cout << "\n" << std::string(70, '=') << "\n";
     std::cout << "ТЕСТИРОВАНИЕ НА РАЗМЕРАХ: ";
-    for (size_t i = 0; i < sizes.size(); i++) {
+    for (size_t i = 0; i < sizes.size(); ++i) {
         std::cout << sizes[i];
-        if (i < sizes.size() - 1)
+        if (i + 1 < sizes.size())
             std::cout << ", ";
     }
     std::cout << "\n" << std::string(70, '=') << "\n";
@@ -350,9 +373,15 @@ void testMultipleSizes(size_t baseSize) {
         std::cout << "\n" << std::setw(6) << size << " ";
         std::cout << std::string(64, '-') << "\n";
 
-        // Создаем и заполняем массив
-        int* arr = new int[size];
-        fillRandom(arr, size);
+        // Создаем и заполняем массив с проверкой выделения памяти
+        int* arr = nullptr;
+        try {
+            arr = new int[size];
+            fillRandom(arr, size);
+        } catch (const std::bad_alloc& e) {
+            std::cerr << "Ошибка выделения памяти для размера " << size << ": " << e.what() << std::endl;
+            continue;
+        }
 
         // Для маленьких массивов показываем исходные данные
         if (size <= 20) {
@@ -366,37 +395,43 @@ void testMultipleSizes(size_t baseSize) {
         // 1. Сортировка выбором (ОСНОВНОЕ ЗАДАНИЕ)
         {
             int* arrCopy = copyArray(arr, size);
-            SortStats stats = selectionSort(arrCopy, size, true);
+            if (arrCopy != nullptr) {
+                SortStats stats = selectionSort(arrCopy, size, true);
 
-            std::cout << "       | " << std::setw(13) << std::left << "Выбором"
-                      << "| " << std::setw(11) << stats.comparisons << "| " << std::setw(13) << stats.swaps << "| " << std::fixed
-                      << std::setprecision(3) << stats.time_ms << "\n";
+                std::cout << "       | " << std::setw(13) << std::left << "Выбором"
+                          << "| " << std::setw(11) << stats.comparisons << "| " << std::setw(13) << stats.swaps << "| " << std::fixed
+                          << std::setprecision(3) << stats.time_ms << "\n";
 
-            delete[] arrCopy;
+                delete[] arrCopy;
+            }
         }
 
         // 2. Сортировка пузырьком (ОСНОВНОЕ ЗАДАНИЕ)
         {
             int* arrCopy = copyArray(arr, size);
-            SortStats stats = bubbleSort(arrCopy, size, true);
+            if (arrCopy != nullptr) {
+                SortStats stats = bubbleSort(arrCopy, size, true);
 
-            std::cout << "       | " << std::setw(13) << std::left << "Пузырьком"
-                      << "| " << std::setw(11) << stats.comparisons << "| " << std::setw(13) << stats.swaps << "| " << std::fixed
-                      << std::setprecision(3) << stats.time_ms << "\n";
+                std::cout << "       | " << std::setw(13) << std::left << "Пузырьком"
+                          << "| " << std::setw(11) << stats.comparisons << "| " << std::setw(13) << stats.swaps << "| " << std::fixed
+                          << std::setprecision(3) << stats.time_ms << "\n";
 
-            delete[] arrCopy;
+                delete[] arrCopy;
+            }
         }
 
         // 3. Быстрая сортировка (ДОПОЛНИТЕЛЬНОЕ ЗАДАНИЕ)
         {
             int* arrCopy = copyArray(arr, size);
-            SortStats stats = quickSort(arrCopy, size, true);
+            if (arrCopy != nullptr) {
+                SortStats stats = quickSort(arrCopy, size, true);
 
-            std::cout << "       | " << std::setw(13) << std::left << "Быстрая"
-                      << "| " << std::setw(11) << stats.comparisons << "| " << std::setw(13) << stats.swaps << "| " << std::fixed
-                      << std::setprecision(3) << stats.time_ms << "\n";
+                std::cout << "       | " << std::setw(13) << std::left << "Быстрая"
+                          << "| " << std::setw(11) << stats.comparisons << "| " << std::setw(13) << stats.swaps << "| " << std::fixed
+                          << std::setprecision(3) << stats.time_ms << "\n";
 
-            delete[] arrCopy;
+                delete[] arrCopy;
+            }
         }
 
         delete[] arr;
@@ -427,6 +462,13 @@ void Assembling() {
         std::cout << "Базовый размер: ";
 
         size_t baseSize = getValidInput("");
+
+        if (baseSize > SIZE_MAX / 1000) {
+            std::cout << "\n⚠️  ВНИМАНИЕ: Запрашиваемый размер слишком большой.\n"
+                      << "   Максимально допустимый базовый размер: " << SIZE_MAX / 1000 << "\n";
+            continueProgram = askToContinue();
+            continue;
+        }
 
         if (baseSize > 10000) {
             char confirm;
