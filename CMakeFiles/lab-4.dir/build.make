@@ -69,44 +69,44 @@ include CMakeFiles/lab-4.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/lab-4.dir/flags.make
 
-CMakeFiles/lab-4.dir/lab_4/main.cpp.o: CMakeFiles/lab-4.dir/flags.make
-CMakeFiles/lab-4.dir/lab_4/main.cpp.o: lab_4/main.cpp
-CMakeFiles/lab-4.dir/lab_4/main.cpp.o: CMakeFiles/lab-4.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/artem/For_BMSTU/Veselov-CPP-Labs-2025/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/lab-4.dir/lab_4/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lab-4.dir/lab_4/main.cpp.o -MF CMakeFiles/lab-4.dir/lab_4/main.cpp.o.d -o CMakeFiles/lab-4.dir/lab_4/main.cpp.o -c /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/lab_4/main.cpp
+CMakeFiles/lab-4.dir/main.cpp.o: CMakeFiles/lab-4.dir/flags.make
+CMakeFiles/lab-4.dir/main.cpp.o: main.cpp
+CMakeFiles/lab-4.dir/main.cpp.o: CMakeFiles/lab-4.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/artem/For_BMSTU/Veselov-CPP-Labs-2025/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/lab-4.dir/main.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lab-4.dir/main.cpp.o -MF CMakeFiles/lab-4.dir/main.cpp.o.d -o CMakeFiles/lab-4.dir/main.cpp.o -c /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/main.cpp
 
-CMakeFiles/lab-4.dir/lab_4/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/lab-4.dir/lab_4/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/lab_4/main.cpp > CMakeFiles/lab-4.dir/lab_4/main.cpp.i
+CMakeFiles/lab-4.dir/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/lab-4.dir/main.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/main.cpp > CMakeFiles/lab-4.dir/main.cpp.i
 
-CMakeFiles/lab-4.dir/lab_4/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/lab-4.dir/lab_4/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/lab_4/main.cpp -o CMakeFiles/lab-4.dir/lab_4/main.cpp.s
+CMakeFiles/lab-4.dir/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/lab-4.dir/main.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/main.cpp -o CMakeFiles/lab-4.dir/main.cpp.s
 
-CMakeFiles/lab-4.dir/lab_4/sorting.cpp.o: CMakeFiles/lab-4.dir/flags.make
-CMakeFiles/lab-4.dir/lab_4/sorting.cpp.o: lab_4/sorting.cpp
-CMakeFiles/lab-4.dir/lab_4/sorting.cpp.o: CMakeFiles/lab-4.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/artem/For_BMSTU/Veselov-CPP-Labs-2025/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/lab-4.dir/lab_4/sorting.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lab-4.dir/lab_4/sorting.cpp.o -MF CMakeFiles/lab-4.dir/lab_4/sorting.cpp.o.d -o CMakeFiles/lab-4.dir/lab_4/sorting.cpp.o -c /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/lab_4/sorting.cpp
+CMakeFiles/lab-4.dir/sorting.cpp.o: CMakeFiles/lab-4.dir/flags.make
+CMakeFiles/lab-4.dir/sorting.cpp.o: sorting.cpp
+CMakeFiles/lab-4.dir/sorting.cpp.o: CMakeFiles/lab-4.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/artem/For_BMSTU/Veselov-CPP-Labs-2025/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/lab-4.dir/sorting.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lab-4.dir/sorting.cpp.o -MF CMakeFiles/lab-4.dir/sorting.cpp.o.d -o CMakeFiles/lab-4.dir/sorting.cpp.o -c /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/sorting.cpp
 
-CMakeFiles/lab-4.dir/lab_4/sorting.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/lab-4.dir/lab_4/sorting.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/lab_4/sorting.cpp > CMakeFiles/lab-4.dir/lab_4/sorting.cpp.i
+CMakeFiles/lab-4.dir/sorting.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/lab-4.dir/sorting.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/sorting.cpp > CMakeFiles/lab-4.dir/sorting.cpp.i
 
-CMakeFiles/lab-4.dir/lab_4/sorting.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/lab-4.dir/lab_4/sorting.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/lab_4/sorting.cpp -o CMakeFiles/lab-4.dir/lab_4/sorting.cpp.s
+CMakeFiles/lab-4.dir/sorting.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/lab-4.dir/sorting.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/sorting.cpp -o CMakeFiles/lab-4.dir/sorting.cpp.s
 
 # Object files for target lab-4
 lab__4_OBJECTS = \
-"CMakeFiles/lab-4.dir/lab_4/main.cpp.o" \
-"CMakeFiles/lab-4.dir/lab_4/sorting.cpp.o"
+"CMakeFiles/lab-4.dir/main.cpp.o" \
+"CMakeFiles/lab-4.dir/sorting.cpp.o"
 
 # External object files for target lab-4
 lab__4_EXTERNAL_OBJECTS =
 
-lab-4: CMakeFiles/lab-4.dir/lab_4/main.cpp.o
-lab-4: CMakeFiles/lab-4.dir/lab_4/sorting.cpp.o
+lab-4: CMakeFiles/lab-4.dir/main.cpp.o
+lab-4: CMakeFiles/lab-4.dir/sorting.cpp.o
 lab-4: CMakeFiles/lab-4.dir/build.make
 lab-4: CMakeFiles/lab-4.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/artem/For_BMSTU/Veselov-CPP-Labs-2025/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable lab-4"

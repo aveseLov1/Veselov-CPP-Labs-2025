@@ -7,12 +7,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 set(SOURCES
-    lab_4/main.cpp
-    lab_4/sorting.cpp
+    main.cpp
+    sorting.cpp
 )
 
 set(HEADERS
-    lab_4/sorting.hpp
+    sorting.hpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})

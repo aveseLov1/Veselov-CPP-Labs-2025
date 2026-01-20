@@ -68,7 +68,7 @@ include CMakeFiles/clang-format.dir/progress.make
 
 CMakeFiles/clang-format:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/artem/For_BMSTU/Veselov-CPP-Labs-2025/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Проверка форматирования кода"
-	/usr/bin/clang-format --dry-run -Werror lab_4/main.cpp lab_4/sorting.cpp lab_4/sorting.hpp
+	/usr/bin/clang-format --dry-run -Werror main.cpp sorting.cpp sorting.hpp
 
 clang-format: CMakeFiles/clang-format
 clang-format: CMakeFiles/clang-format.dir/build.make

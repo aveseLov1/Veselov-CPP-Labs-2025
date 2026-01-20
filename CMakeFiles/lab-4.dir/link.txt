@@ -1,1 +1,1 @@
-/usr/bin/c++ "CMakeFiles/lab-4.dir/lab_4/main.cpp.o" "CMakeFiles/lab-4.dir/lab_4/sorting.cpp.o" -o lab-4 
+/usr/bin/c++ "CMakeFiles/lab-4.dir/main.cpp.o" "CMakeFiles/lab-4.dir/sorting.cpp.o" -o lab-4 

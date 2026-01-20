@@ -142,53 +142,53 @@ clang-format/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/clang-format.dir/build.make CMakeFiles/clang-format.dir/build
 .PHONY : clang-format/fast
 
-lab_4/main.o: lab_4/main.cpp.o
-.PHONY : lab_4/main.o
+main.o: main.cpp.o
+.PHONY : main.o
 
 # target to build an object file
-lab_4/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab-4.dir/build.make CMakeFiles/lab-4.dir/lab_4/main.cpp.o
-.PHONY : lab_4/main.cpp.o
+main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab-4.dir/build.make CMakeFiles/lab-4.dir/main.cpp.o
+.PHONY : main.cpp.o
 
-lab_4/main.i: lab_4/main.cpp.i
-.PHONY : lab_4/main.i
+main.i: main.cpp.i
+.PHONY : main.i
 
 # target to preprocess a source file
-lab_4/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab-4.dir/build.make CMakeFiles/lab-4.dir/lab_4/main.cpp.i
-.PHONY : lab_4/main.cpp.i
+main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab-4.dir/build.make CMakeFiles/lab-4.dir/main.cpp.i
+.PHONY : main.cpp.i
 
-lab_4/main.s: lab_4/main.cpp.s
-.PHONY : lab_4/main.s
+main.s: main.cpp.s
+.PHONY : main.s
 
 # target to generate assembly for a file
-lab_4/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab-4.dir/build.make CMakeFiles/lab-4.dir/lab_4/main.cpp.s
-.PHONY : lab_4/main.cpp.s
+main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab-4.dir/build.make CMakeFiles/lab-4.dir/main.cpp.s
+.PHONY : main.cpp.s
 
-lab_4/sorting.o: lab_4/sorting.cpp.o
-.PHONY : lab_4/sorting.o
+sorting.o: sorting.cpp.o
+.PHONY : sorting.o
 
 # target to build an object file
-lab_4/sorting.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab-4.dir/build.make CMakeFiles/lab-4.dir/lab_4/sorting.cpp.o
-.PHONY : lab_4/sorting.cpp.o
+sorting.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab-4.dir/build.make CMakeFiles/lab-4.dir/sorting.cpp.o
+.PHONY : sorting.cpp.o
 
-lab_4/sorting.i: lab_4/sorting.cpp.i
-.PHONY : lab_4/sorting.i
+sorting.i: sorting.cpp.i
+.PHONY : sorting.i
 
 # target to preprocess a source file
-lab_4/sorting.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab-4.dir/build.make CMakeFiles/lab-4.dir/lab_4/sorting.cpp.i
-.PHONY : lab_4/sorting.cpp.i
+sorting.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab-4.dir/build.make CMakeFiles/lab-4.dir/sorting.cpp.i
+.PHONY : sorting.cpp.i
 
-lab_4/sorting.s: lab_4/sorting.cpp.s
-.PHONY : lab_4/sorting.s
+sorting.s: sorting.cpp.s
+.PHONY : sorting.s
 
 # target to generate assembly for a file
-lab_4/sorting.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab-4.dir/build.make CMakeFiles/lab-4.dir/lab_4/sorting.cpp.s
-.PHONY : lab_4/sorting.cpp.s
+sorting.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab-4.dir/build.make CMakeFiles/lab-4.dir/sorting.cpp.s
+.PHONY : sorting.cpp.s
 
 # Help Target
 help:
@@ -200,12 +200,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... clang-format"
 	@echo "... lab-4"
-	@echo "... lab_4/main.o"
-	@echo "... lab_4/main.i"
-	@echo "... lab_4/main.s"
-	@echo "... lab_4/sorting.o"
-	@echo "... lab_4/sorting.i"
-	@echo "... lab_4/sorting.s"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
+	@echo "... sorting.o"
+	@echo "... sorting.i"
+	@echo "... sorting.s"
 .PHONY : help
 
 
