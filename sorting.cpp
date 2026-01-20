@@ -76,8 +76,7 @@ SortStats selectionSort(T* arr, size_t size, bool ascending = true) {
     }
 
     auto end = std::chrono::high_resolution_clock::now();
-    stats.time_ms =
-        std::chrono::duration<double, std::milli>(end - start).count();
+    stats.time_ms = std::chrono::duration<double, std::milli>(end - start).count();
 
     return stats;
 }
@@ -107,16 +106,15 @@ SortStats bubbleSort(T* arr, size_t size, bool ascending = true) {
     }
 
     auto end = std::chrono::high_resolution_clock::now();
-    stats.time_ms =
-        std::chrono::duration<double, std::milli>(end - start).count();
+    stats.time_ms = std::chrono::duration<double, std::milli>(end - start).count();
 
     return stats;
 }
 
 // Быстрая сортировка (дополнительное задание)
 template <typename T>
-size_t partition(T* arr, size_t low, size_t high, bool ascending,
-                 SortStats& stats) {
+size_t partition(T* arr, size_t low, size_t high,
+                 bool ascending, SortStats& stats) {
     T pivot = arr[high];
     size_t i = low;
 
@@ -140,8 +138,8 @@ size_t partition(T* arr, size_t low, size_t high, bool ascending,
 }
 
 template <typename T>
-void quickSortRecursive(T* arr, size_t low, size_t high, bool ascending,
-                        SortStats& stats) {
+void quickSortRecursive(T* arr, size_t low, size_t high,
+                        bool ascending, SortStats& stats) {
     if (low < high) {
         size_t pi = partition(arr, low, high, ascending, stats);
 
@@ -161,8 +159,7 @@ SortStats quickSort(T* arr, size_t size, bool ascending = true) {
         auto start = std::chrono::high_resolution_clock::now();
         quickSortRecursive(arr, 0, size - 1, ascending, stats);
         auto end = std::chrono::high_resolution_clock::now();
-        stats.time_ms =
-            std::chrono::duration<double, std::milli>(end - start).count();
+        stats.time_ms = std::chrono::duration<double, std::milli>(end - start).count();
     }
     return stats;
 }
@@ -191,8 +188,8 @@ int* copyArray(const int* source, size_t size) {
             copy[i] = source[i];
         }
     } catch (const std::bad_alloc& e) {
-        std::cerr << "Ошибка выделения памяти для массива размером " << size
-                  << ": " << e.what() << std::endl;
+        std::cerr << "Ошибка выделения памяти для массива размером "
+                  << size << ": " << e.what() << std::endl;
         return nullptr;
     }
     return copy;
@@ -255,8 +252,8 @@ void testStaticArrays() {
     const size_t staticSize = kStaticArraySize;
 
     std::cout << "\n" << std::string(kLineLengthLong, '=') << "\n";
-    std::cout << "ЧАСТЬ 1: ТЕСТИРОВАНИЕ НА СТАТИЧЕСКОМ МАССИВЕ (" << staticSize
-              << " элементов)\n";
+    std::cout << "ЧАСТЬ 1: ТЕСТИРОВАНИЕ НА СТАТИЧЕСКОМ МАССИВЕ ("
+              << staticSize << " элементов)\n";
     std::cout << std::string(kLineLengthLong, '=') << "\n";
 
     // Создаем и заполняем исходный статический массив
@@ -425,8 +422,8 @@ void testMultipleSizes(size_t baseSize) {
             arr = new int[size];
             fillRandom(arr, size);
         } catch (const std::bad_alloc& e) {
-            std::cerr << "Ошибка выделения памяти для размера " << size << ": "
-                      << e.what() << std::endl;
+            std::cerr << "Ошибка выделения памяти для размера "
+                      << size << ": " << e.what() << std::endl;
             continue;
         }
 
@@ -445,12 +442,13 @@ void testMultipleSizes(size_t baseSize) {
             if (arrCopy != nullptr) {
                 SortStats stats = selectionSort(arrCopy, size, true);
 
-                std::cout << "       | " << std::setw(kTableWidthMethod) << std::left
-                          << "Выбором"
+                std::cout << "       | " << std::setw(kTableWidthMethod)
+                          << std::left << "Выбором"
                           << "| " << std::setw(kTableWidthComparisons)
-                          << stats.comparisons << "| " << std::setw(kTableWidthSwaps)
-                          << stats.swaps << "| " << std::fixed
-                          << std::setprecision(3) << stats.time_ms << "\n";
+                          << stats.comparisons << "| "
+                          << std::setw(kTableWidthSwaps) << stats.swaps
+                          << "| " << std::fixed << std::setprecision(3)
+                          << stats.time_ms << "\n";
 
                 delete[] arrCopy;
             }
@@ -462,12 +460,13 @@ void testMultipleSizes(size_t baseSize) {
             if (arrCopy != nullptr) {
                 SortStats stats = bubbleSort(arrCopy, size, true);
 
-                std::cout << "       | " << std::setw(kTableWidthMethod) << std::left
-                          << "Пузырьком"
+                std::cout << "       | " << std::setw(kTableWidthMethod)
+                          << std::left << "Пузырьком"
                           << "| " << std::setw(kTableWidthComparisons)
-                          << stats.comparisons << "| " << std::setw(kTableWidthSwaps)
-                          << stats.swaps << "| " << std::fixed
-                          << std::setprecision(3) << stats.time_ms << "\n";
+                          << stats.comparisons << "| "
+                          << std::setw(kTableWidthSwaps) << stats.swaps
+                          << "| " << std::fixed << std::setprecision(3)
+                          << stats.time_ms << "\n";
 
                 delete[] arrCopy;
             }
@@ -479,12 +478,13 @@ void testMultipleSizes(size_t baseSize) {
             if (arrCopy != nullptr) {
                 SortStats stats = quickSort(arrCopy, size, true);
 
-                std::cout << "       | " << std::setw(kTableWidthMethod) << std::left
-                          << "Быстрая"
+                std::cout << "       | " << std::setw(kTableWidthMethod)
+                          << std::left << "Быстрая"
                           << "| " << std::setw(kTableWidthComparisons)
-                          << stats.comparisons << "| " << std::setw(kTableWidthSwaps)
-                          << stats.swaps << "| " << std::fixed
-                          << std::setprecision(3) << stats.time_ms << "\n";
+                          << stats.comparisons << "| "
+                          << std::setw(kTableWidthSwaps) << stats.swaps
+                          << "| " << std::fixed << std::setprecision(3)
+                          << stats.time_ms << "\n";
 
                 delete[] arrCopy;
             }
