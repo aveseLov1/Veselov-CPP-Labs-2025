@@ -36,7 +36,8 @@ struct SortStats {
 };
 
 // Функция вывода массива
-template <typename T> void printArray(T *arr, size_t size) {
+template <typename T>
+void printArray(T* arr, size_t size) {
   std::cout << "[";
   size_t printSize = (size < kMaxPrintSize) ? size : kMaxPrintSize;
   for (size_t i = 0; i < printSize; ++i) {
@@ -53,7 +54,7 @@ template <typename T> void printArray(T *arr, size_t size) {
 
 // Сортировка выбором
 template <typename T>
-SortStats selectionSort(T *arr, size_t size, bool ascending = true) {
+SortStats selectionSort(T* arr, size_t size, bool ascending = true) {
   SortStats stats;
   auto start = std::chrono::high_resolution_clock::now();
 
@@ -83,7 +84,7 @@ SortStats selectionSort(T *arr, size_t size, bool ascending = true) {
 
 // Сортировка пузырьком
 template <typename T>
-SortStats bubbleSort(T *arr, size_t size, bool ascending = true) {
+SortStats bubbleSort(T* arr, size_t size, bool ascending = true) {
   SortStats stats;
   auto start = std::chrono::high_resolution_clock::now();
   bool swapped = false;
@@ -114,8 +115,8 @@ SortStats bubbleSort(T *arr, size_t size, bool ascending = true) {
 
 // Быстрая сортировка (дополнительное задание)
 template <typename T>
-size_t partition(T *arr, size_t low, size_t high, bool ascending,
-                 SortStats &stats) {
+size_t partition(T* arr, size_t low, size_t high, bool ascending,
+                 SortStats& stats) {
   T pivot = arr[high];
   size_t i = low;
 
@@ -139,8 +140,8 @@ size_t partition(T *arr, size_t low, size_t high, bool ascending,
 }
 
 template <typename T>
-void quickSortRecursive(T *arr, size_t low, size_t high, bool ascending,
-                        SortStats &stats) {
+void quickSortRecursive(T* arr, size_t low, size_t high, bool ascending,
+                        SortStats& stats) {
   if (low < high) {
     size_t pi = partition(arr, low, high, ascending, stats);
 
@@ -154,7 +155,7 @@ void quickSortRecursive(T *arr, size_t low, size_t high, bool ascending,
 }
 
 template <typename T>
-SortStats quickSort(T *arr, size_t size, bool ascending = true) {
+SortStats quickSort(T* arr, size_t size, bool ascending = true) {
   SortStats stats;
   if (size > 1) {
     auto start = std::chrono::high_resolution_clock::now();
@@ -167,7 +168,7 @@ SortStats quickSort(T *arr, size_t size, bool ascending = true) {
 }
 
 // Заполнение массива случайными числами
-void fillRandom(int *arr, size_t size, int min = 0, int max = kDefaultRandomMax) {
+void fillRandom(int* arr, size_t size, int min = 0, int max = kDefaultRandomMax) {
   std::random_device rd;
   std::default_random_engine engine(rd());
   std::uniform_int_distribution<int> distribution(min, max);
@@ -178,18 +179,18 @@ void fillRandom(int *arr, size_t size, int min = 0, int max = kDefaultRandomMax)
 }
 
 // Копирование массива
-int *copyArray(const int *source, size_t size) {
+int* copyArray(const int* source, size_t size) {
   if (size == 0) {
     return nullptr;
   }
 
-  int *copy = nullptr;
+  int* copy = nullptr;
   try {
     copy = new int[size];
     for (size_t i = 0; i < size; ++i) {
       copy[i] = source[i];
     }
-  } catch (const std::bad_alloc &e) {
+  } catch (const std::bad_alloc& e) {
     std::cerr << "Ошибка выделения памяти для массива размером " << size
               << ": " << e.what() << std::endl;
     return nullptr;
@@ -206,13 +207,13 @@ void copyStaticArray(const int (&source)[N], int (&dest)[N]) {
 }
 
 // Явные инстанциации шаблонов для int
-template void printArray<int>(int *arr, size_t size);
-template SortStats selectionSort<int>(int *arr, size_t size, bool ascending);
-template SortStats bubbleSort<int>(int *arr, size_t size, bool ascending);
-template SortStats quickSort<int>(int *arr, size_t size, bool ascending);
+template void printArray<int>(int* arr, size_t size);
+template SortStats selectionSort<int>(int* arr, size_t size, bool ascending);
+template SortStats bubbleSort<int>(int* arr, size_t size, bool ascending);
+template SortStats quickSort<int>(int* arr, size_t size, bool ascending);
 
 // Функция для проверки ввода числа
-size_t getValidInput(const std::string &prompt) {
+size_t getValidInput(const std::string& prompt) {
   size_t value = 0;
   while (true) {
     std::cout << prompt;
@@ -231,7 +232,7 @@ size_t getValidInput(const std::string &prompt) {
   }
 }
 
-} // namespace
+}  // namespace
 
 namespace AssemblingSorting {
 
@@ -420,11 +421,11 @@ void testMultipleSizes(size_t baseSize) {
     std::cout << std::string(kDashLineLength, '-') << "\n";
 
     // Создаем и заполняем массив с проверкой выделения памяти
-    int *arr = nullptr;
+    int* arr = nullptr;
     try {
       arr = new int[size];
       fillRandom(arr, size);
-    } catch (const std::bad_alloc &e) {
+    } catch (const std::bad_alloc& e) {
       std::cerr << "Ошибка выделения памяти для размера " << size << ": "
                 << e.what() << std::endl;
       continue;
@@ -441,7 +442,7 @@ void testMultipleSizes(size_t baseSize) {
 
     // 1. Сортировка выбором
     {
-      int *arrCopy = copyArray(arr, size);
+      int* arrCopy = copyArray(arr, size);
       if (arrCopy != nullptr) {
         SortStats stats = selectionSort(arrCopy, size, true);
 
@@ -457,7 +458,7 @@ void testMultipleSizes(size_t baseSize) {
 
     // 2. Сортировка пузырьком
     {
-      int *arrCopy = copyArray(arr, size);
+      int* arrCopy = copyArray(arr, size);
       if (arrCopy != nullptr) {
         SortStats stats = bubbleSort(arrCopy, size, true);
 
@@ -473,7 +474,7 @@ void testMultipleSizes(size_t baseSize) {
 
     // 3. Быстрая сортировка
     {
-      int *arrCopy = copyArray(arr, size);
+      int* arrCopy = copyArray(arr, size);
       if (arrCopy != nullptr) {
         SortStats stats = quickSort(arrCopy, size, true);
 
@@ -550,4 +551,4 @@ void Assembling() {
   std::cout << std::string(kLineLengthLong, '=') << "\n";
 }
 
-} // namespace AssemblingSorting
+}  // namespace AssemblingSorting

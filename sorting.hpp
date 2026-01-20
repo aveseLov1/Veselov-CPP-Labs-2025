@@ -8,6 +8,6 @@ void Assembling();
 bool askToContinue();
 void testStaticArrays();
 void testMultipleSizes(size_t baseSize);
-} // namespace AssemblingSorting
+}  // namespace AssemblingSorting
 
-#endif // SORTING_HPP
+#endif  // SORTING_HPP
