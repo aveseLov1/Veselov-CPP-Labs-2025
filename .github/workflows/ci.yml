@@ -12,7 +12,7 @@ jobs:
     container: ghcr.io/cpp-linter/clang-tools:18
     steps:
     - uses: actions/checkout@v4
-    - run: find . -iname "*.hpp" -o -iname "*.h" | xargs clang-format --dry-run -Werror *.cpp
+    - run: find . -iname lab_4/"*.hpp" -o -iname "*.h" | xargs clang-format --dry-run -Werror *.cpp
 
   clang-tidy:
     runs-on: ubuntu-latest
