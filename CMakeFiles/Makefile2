@@ -57,13 +57,13 @@ EQUALS = =
 CMAKE_SOURCE_DIR = /home/artem/For_BMSTU/Veselov-CPP-Labs-2025
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/build
+CMAKE_BINARY_DIR = /home/artem/For_BMSTU/Veselov-CPP-Labs-2025
 
 #=============================================================================
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/lab_1.dir/all
+all: CMakeFiles/lab-1.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -71,35 +71,35 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/lab_1.dir/clean
+clean: CMakeFiles/lab-1.dir/clean
 clean: CMakeFiles/clang-format.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/lab_1.dir
+# Target rules for target CMakeFiles/lab-1.dir
 
 # All Build rule for target.
-CMakeFiles/lab_1.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_1.dir/build.make CMakeFiles/lab_1.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_1.dir/build.make CMakeFiles/lab_1.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/artem/For_BMSTU/Veselov-CPP-Labs-2025/build/CMakeFiles --progress-num=1,2 "Built target lab_1"
-.PHONY : CMakeFiles/lab_1.dir/all
+CMakeFiles/lab-1.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab-1.dir/build.make CMakeFiles/lab-1.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab-1.dir/build.make CMakeFiles/lab-1.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/artem/For_BMSTU/Veselov-CPP-Labs-2025/CMakeFiles --progress-num=2,3 "Built target lab-1"
+.PHONY : CMakeFiles/lab-1.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/lab_1.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/build/CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/lab_1.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/build/CMakeFiles 0
-.PHONY : CMakeFiles/lab_1.dir/rule
+CMakeFiles/lab-1.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/lab-1.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/CMakeFiles 0
+.PHONY : CMakeFiles/lab-1.dir/rule
 
 # Convenience name for target.
-lab_1: CMakeFiles/lab_1.dir/rule
-.PHONY : lab_1
+lab-1: CMakeFiles/lab-1.dir/rule
+.PHONY : lab-1
 
 # clean rule for target.
-CMakeFiles/lab_1.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_1.dir/build.make CMakeFiles/lab_1.dir/clean
-.PHONY : CMakeFiles/lab_1.dir/clean
+CMakeFiles/lab-1.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab-1.dir/build.make CMakeFiles/lab-1.dir/clean
+.PHONY : CMakeFiles/lab-1.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/clang-format.dir
@@ -108,14 +108,14 @@ CMakeFiles/lab_1.dir/clean:
 CMakeFiles/clang-format.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/clang-format.dir/build.make CMakeFiles/clang-format.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/clang-format.dir/build.make CMakeFiles/clang-format.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/artem/For_BMSTU/Veselov-CPP-Labs-2025/build/CMakeFiles --progress-num= "Built target clang-format"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/artem/For_BMSTU/Veselov-CPP-Labs-2025/CMakeFiles --progress-num=1 "Built target clang-format"
 .PHONY : CMakeFiles/clang-format.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/clang-format.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/CMakeFiles 1
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/clang-format.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/CMakeFiles 0
 .PHONY : CMakeFiles/clang-format.dir/rule
 
 # Convenience name for target.

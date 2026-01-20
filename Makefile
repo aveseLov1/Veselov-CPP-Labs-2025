@@ -60,7 +60,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = /home/artem/For_BMSTU/Veselov-CPP-Labs-2025
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/build
+CMAKE_BINARY_DIR = /home/artem/For_BMSTU/Veselov-CPP-Labs-2025
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/build/CMakeFiles /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/CMakeFiles /home/artem/For_BMSTU/Veselov-CPP-Labs-2025//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -117,17 +117,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named lab_1
+# Target rules for targets named lab-1
 
 # Build rule for target.
-lab_1: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lab_1
-.PHONY : lab_1
+lab-1: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lab-1
+.PHONY : lab-1
 
 # fast build rule for target.
-lab_1/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_1.dir/build.make CMakeFiles/lab_1.dir/build
-.PHONY : lab_1/fast
+lab-1/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab-1.dir/build.make CMakeFiles/lab-1.dir/build
+.PHONY : lab-1/fast
 
 #=============================================================================
 # Target rules for targets named clang-format
@@ -147,7 +147,7 @@ lab_1.o: lab_1.cpp.o
 
 # target to build an object file
 lab_1.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_1.dir/build.make CMakeFiles/lab_1.dir/lab_1.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab-1.dir/build.make CMakeFiles/lab-1.dir/lab_1.cpp.o
 .PHONY : lab_1.cpp.o
 
 lab_1.i: lab_1.cpp.i
@@ -155,7 +155,7 @@ lab_1.i: lab_1.cpp.i
 
 # target to preprocess a source file
 lab_1.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_1.dir/build.make CMakeFiles/lab_1.dir/lab_1.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab-1.dir/build.make CMakeFiles/lab-1.dir/lab_1.cpp.i
 .PHONY : lab_1.cpp.i
 
 lab_1.s: lab_1.cpp.s
@@ -163,7 +163,7 @@ lab_1.s: lab_1.cpp.s
 
 # target to generate assembly for a file
 lab_1.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_1.dir/build.make CMakeFiles/lab_1.dir/lab_1.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab-1.dir/build.make CMakeFiles/lab-1.dir/lab_1.cpp.s
 .PHONY : lab_1.cpp.s
 
 # Help Target
@@ -175,7 +175,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... clang-format"
-	@echo "... lab_1"
+	@echo "... lab-1"
 	@echo "... lab_1.o"
 	@echo "... lab_1.i"
 	@echo "... lab_1.s"

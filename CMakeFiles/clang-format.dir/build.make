@@ -56,7 +56,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = /home/artem/For_BMSTU/Veselov-CPP-Labs-2025
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/build
+CMAKE_BINARY_DIR = /home/artem/For_BMSTU/Veselov-CPP-Labs-2025
 
 # Utility rule file for clang-format.
 
@@ -67,8 +67,8 @@ include CMakeFiles/clang-format.dir/compiler_depend.make
 include CMakeFiles/clang-format.dir/progress.make
 
 CMakeFiles/clang-format:
-	off
-	clang-format off --dry-run -Werror /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/lab_1.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/artem/For_BMSTU/Veselov-CPP-Labs-2025/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Проверка форматирования кода"
+	/usr/bin/clang-format --dry-run -Werror lab_1.cpp
 
 clang-format: CMakeFiles/clang-format
 clang-format: CMakeFiles/clang-format.dir/build.make
@@ -83,6 +83,6 @@ CMakeFiles/clang-format.dir/clean:
 .PHONY : CMakeFiles/clang-format.dir/clean
 
 CMakeFiles/clang-format.dir/depend:
-	cd /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/artem/For_BMSTU/Veselov-CPP-Labs-2025 /home/artem/For_BMSTU/Veselov-CPP-Labs-2025 /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/build /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/build /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/build/CMakeFiles/clang-format.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/artem/For_BMSTU/Veselov-CPP-Labs-2025 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/artem/For_BMSTU/Veselov-CPP-Labs-2025 /home/artem/For_BMSTU/Veselov-CPP-Labs-2025 /home/artem/For_BMSTU/Veselov-CPP-Labs-2025 /home/artem/For_BMSTU/Veselov-CPP-Labs-2025 /home/artem/For_BMSTU/Veselov-CPP-Labs-2025/CMakeFiles/clang-format.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/clang-format.dir/depend
 
