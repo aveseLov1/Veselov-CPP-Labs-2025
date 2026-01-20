@@ -47,8 +47,7 @@ void print_result(const SolutionResult& result, const std::string& method_name, 
         return;
     }
 
-    std::cout << "Найденный корень: " << std::fixed
-              << std::setprecision(static_cast<int>(epsilon)) << result.root << "\n";
+    std::cout << "Найденный корень: " << std::fixed << std::setprecision(static_cast<int>(epsilon)) << result.root << "\n";
     std::cout << "Количество итераций: " << result.iterations << "\n";
     std::cout << "Точность вычислений: 10^(-" << epsilon << ")\n\n";
 }
