@@ -1,7 +1,6 @@
 #include "sorting.hpp"
 
-int main()
-{
+int main() {
     AssemblingSorting::Assembling();
     return 0;
 }
