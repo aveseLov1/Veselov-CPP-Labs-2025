@@ -227,42 +227,6 @@ lab-4_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 lab-4_SOURCE_DIR:STATIC=/home/artem/For_BMSTU/Veselov-CPP-Labs-2025
 
-//Value Computed by CMake
-lab-5_BINARY_DIR:STATIC=/home/artem/For_BMSTU/Veselov-CPP-Labs-2025
-
-//Value Computed by CMake
-lab-5_IS_TOP_LEVEL:STATIC=ON
-
-//Value Computed by CMake
-lab-5_SOURCE_DIR:STATIC=/home/artem/For_BMSTU/Veselov-CPP-Labs-2025
-
-//Value Computed by CMake
-lab-6_BINARY_DIR:STATIC=/home/artem/For_BMSTU/Veselov-CPP-Labs-2025
-
-//Value Computed by CMake
-lab-6_IS_TOP_LEVEL:STATIC=ON
-
-//Value Computed by CMake
-lab-6_SOURCE_DIR:STATIC=/home/artem/For_BMSTU/Veselov-CPP-Labs-2025
-
-//Value Computed by CMake
-lab-7_BINARY_DIR:STATIC=/home/artem/For_BMSTU/Veselov-CPP-Labs-2025
-
-//Value Computed by CMake
-lab-7_IS_TOP_LEVEL:STATIC=ON
-
-//Value Computed by CMake
-lab-7_SOURCE_DIR:STATIC=/home/artem/For_BMSTU/Veselov-CPP-Labs-2025
-
-//Value Computed by CMake
-lab_7_BINARY_DIR:STATIC=/home/artem/For_BMSTU/Veselov-CPP-Labs-2025
-
-//Value Computed by CMake
-lab_7_IS_TOP_LEVEL:STATIC=ON
-
-//Value Computed by CMake
-lab_7_SOURCE_DIR:STATIC=/home/artem/For_BMSTU/Veselov-CPP-Labs-2025
-
 
 ########################
 # INTERNAL cache entries

@@ -1,1 +1,0 @@
-/usr/bin/c++ "CMakeFiles/lab-7.dir/lab_7/main.cpp.o" "CMakeFiles/lab-7.dir/lab_7/matrix_operations.cpp.o" -o lab-7 

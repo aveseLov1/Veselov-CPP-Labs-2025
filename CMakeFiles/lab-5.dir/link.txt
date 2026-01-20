@@ -1,1 +1,0 @@
-/usr/bin/c++ "CMakeFiles/lab-5.dir/lab_5/main.cpp.o" "CMakeFiles/lab-5.dir/lab_5/cipher_Caesar.cpp.o" -o lab-5 
