@@ -1,0 +1,4 @@
+/home/artem/For_BMSTU/Veselov-CPP-Labs-2025/CMakeFiles/lab-3.dir
+/home/artem/For_BMSTU/Veselov-CPP-Labs-2025/CMakeFiles/clang-format.dir
+/home/artem/For_BMSTU/Veselov-CPP-Labs-2025/CMakeFiles/edit_cache.dir
+/home/artem/For_BMSTU/Veselov-CPP-Labs-2025/CMakeFiles/rebuild_cache.dir
