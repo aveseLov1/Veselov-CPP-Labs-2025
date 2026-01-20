@@ -112,8 +112,7 @@ SortStats bubbleSort(T *arr, size_t size, bool ascending = true) {
 
 // Быстрая сортировка (дополнительное задание)
 template <typename T>
-size_t partition(T *arr, size_t low, size_t high, bool ascending,
-                 SortStats &stats) {
+size_t partition(T *arr, size_t low, size_t high, bool ascending, SortStats &stats) {
   T pivot = arr[high];
   size_t i = low;
 
@@ -137,8 +136,7 @@ size_t partition(T *arr, size_t low, size_t high, bool ascending,
 }
 
 template <typename T>
-void quickSortRecursive(T *arr, size_t low, size_t high, bool ascending,
-                        SortStats &stats) {
+void quickSortRecursive(T *arr, size_t low, size_t high, bool ascending, SortStats &stats) {
   if (low < high) {
     size_t pi = partition(arr, low, high, ascending, stats);
 
@@ -187,8 +185,7 @@ int *copyArray(const int *source, size_t size) {
       copy[i] = source[i];
     }
   } catch (const std::bad_alloc &e) {
-    std::cerr << "Ошибка выделения памяти для массива размером " << size
-              << ": " << e.what() << std::endl;
+    std::cerr << "Ошибка выделения памяти для массива размером " << size << ": " << e.what() << std::endl;
     return nullptr;
   }
   return copy;
@@ -251,8 +248,7 @@ void testStaticArrays() {
   const size_t staticSize = kStaticArraySize;
 
   std::cout << "\n" << std::string(kLineLengthLong, '=') << "\n";
-  std::cout << "ЧАСТЬ 1: ТЕСТИРОВАНИЕ НА СТАТИЧЕСКОМ МАССИВЕ (" << staticSize
-            << " элементов)\n";
+  std::cout << "ЧАСТЬ 1: ТЕСТИРОВАНИЕ НА СТАТИЧЕСКОМ МАССИВЕ (" << staticSize << " элементов)\n";
   std::cout << std::string(kLineLengthLong, '=') << "\n";
 
   // Создаем и заполняем исходный статический массив
@@ -294,24 +290,21 @@ void testStaticArrays() {
   SortStats stats1 = selectionSort(arrSelection1, staticSize, true);
   std::cout << "   Массив: ";
   printArray(arrSelection1, staticSize);
-  std::cout << "\n   Сравнения: " << stats1.comparisons
-            << ", Перестановки: " << stats1.swaps << "\n\n";
+  std::cout << "\n   Сравнения: " << stats1.comparisons << ", Перестановки: " << stats1.swaps << "\n\n";
 
   // 2. Уже отсортированный -> по возрастанию (заново)
   std::cout << "2. Отсортированный массив -> по возрастанию (заново):\n";
   SortStats stats2 = selectionSort(arrSelection2, staticSize, true);
   std::cout << "   Массив: ";
   printArray(arrSelection2, staticSize);
-  std::cout << "\n   Сравнения: " << stats2.comparisons
-            << ", Перестановки: " << stats2.swaps << "\n\n";
+  std::cout << "\n   Сравнения: " << stats2.comparisons << ", Перестановки: " << stats2.swaps << "\n\n";
 
   // 3. Отсортированный -> по убыванию
   std::cout << "3. Отсортированный массив -> по убыванию:\n";
   SortStats stats3 = selectionSort(arrSelection3, staticSize, false);
   std::cout << "   Массив: ";
   printArray(arrSelection3, staticSize);
-  std::cout << "\n   Сравнения: " << stats3.comparisons
-            << ", Перестановки: " << stats3.swaps << "\n\n";
+  std::cout << "\n   Сравнения: " << stats3.comparisons << ", Перестановки: " << stats3.swaps << "\n\n";
 
   // Тестируем сортировку пузырьком
   std::cout << "АЛГОРИТМ: СОРТИРОВКА ПУЗЫРЬКОМ (основное задание)\n";
@@ -322,24 +315,21 @@ void testStaticArrays() {
   SortStats stats4 = bubbleSort(arrBubble1, staticSize, true);
   std::cout << "   Массив: ";
   printArray(arrBubble1, staticSize);
-  std::cout << "\n   Сравнения: " << stats4.comparisons
-            << ", Перестановки: " << stats4.swaps << "\n\n";
+  std::cout << "\n   Сравнения: " << stats4.comparisons << ", Перестановки: " << stats4.swaps << "\n\n";
 
   // 2. Уже отсортированный -> по возрастанию (заново)
   std::cout << "2. Отсортированный массив -> по возрастанию (заново):\n";
   SortStats stats5 = bubbleSort(arrBubble2, staticSize, true);
   std::cout << "   Массив: ";
   printArray(arrBubble2, staticSize);
-  std::cout << "\n   Сравнения: " << stats5.comparisons
-            << ", Перестановки: " << stats5.swaps << "\n\n";
+  std::cout << "\n   Сравнения: " << stats5.comparisons << ", Перестановки: " << stats5.swaps << "\n\n";
 
   // 3. Отсортированный -> по убыванию
   std::cout << "3. Отсортированный массив -> по убыванию:\n";
   SortStats stats6 = bubbleSort(arrBubble3, staticSize, false);
   std::cout << "   Массив: ";
   printArray(arrBubble3, staticSize);
-  std::cout << "\n   Сравнения: " << stats6.comparisons
-            << ", Перестановки: " << stats6.swaps << "\n\n";
+  std::cout << "\n   Сравнения: " << stats6.comparisons << ", Перестановки: " << stats6.swaps << "\n\n";
 
   // Тестируем быструю сортировку
   std::cout << "АЛГОРИТМ: БЫСТРАЯ СОРТИРОВКА (дополнительное задание)\n";
@@ -350,24 +340,21 @@ void testStaticArrays() {
   SortStats stats7 = quickSort(arrQuick1, staticSize, true);
   std::cout << "   Массив: ";
   printArray(arrQuick1, staticSize);
-  std::cout << "\n   Сравнения: " << stats7.comparisons
-            << ", Перестановки: " << stats7.swaps << "\n\n";
+  std::cout << "\n   Сравнения: " << stats7.comparisons << ", Перестановки: " << stats7.swaps << "\n\n";
 
   // 2. Уже отсортированный -> по возрастанию (заново)
   std::cout << "2. Отсортированный массив -> по возрастанию (заново):\n";
   SortStats stats8 = quickSort(arrQuick2, staticSize, true);
   std::cout << "   Массив: ";
   printArray(arrQuick2, staticSize);
-  std::cout << "\n   Сравнения: " << stats8.comparisons
-            << ", Перестановки: " << stats8.swaps << "\n\n";
+  std::cout << "\n   Сравнения: " << stats8.comparisons << ", Перестановки: " << stats8.swaps << "\n\n";
 
   // 3. Отсортированный -> по убыванию
   std::cout << "3. Отсортированный массив -> по убыванию:\n";
   SortStats stats9 = quickSort(arrQuick3, staticSize, false);
   std::cout << "   Массив: ";
   printArray(arrQuick3, staticSize);
-  std::cout << "\n   Сравнения: " << stats9.comparisons
-            << ", Перестановки: " << stats9.swaps << "\n\n";
+  std::cout << "\n   Сравнения: " << stats9.comparisons << ", Перестановки: " << stats9.swaps << "\n\n";
 
   std::cout << std::string(kLineLengthLong, '=') << "\n";
   std::cout << "ТЕСТИРОВАНИЕ СТАТИЧЕСКИХ МАССИВОВ ЗАВЕРШЕНО\n";
@@ -387,9 +374,7 @@ void testMultipleSizes(size_t baseSize) {
     // Проверка перед умножением
     if (i + 1 < iterationCount) {
       if (current > SIZE_MAX / kMultiplierBase) {
-        std::cout
-            << "Предупреждение: достигнут максимальный размер, пропуск "
-               "дальнейшего умножения\n";
+        std::cout << "Предупреждение: достигнут максимальный размер, пропуск дальнейшего умножения\n";
         break;
       }
       current *= kMultiplierBase;
@@ -407,8 +392,7 @@ void testMultipleSizes(size_t baseSize) {
   std::cout << "\n" << std::string(kLineLengthLong, '=') << "\n";
 
   // Заголовок таблицы
-  std::cout << "\nРАЗМЕР | МЕТОД         | СРАВНЕНИЯ   | ПЕРЕСТАНОВКИ | ВРЕМЯ "
-               "(мс)\n";
+  std::cout << "\nРАЗМЕР | МЕТОД         | СРАВНЕНИЯ   | ПЕРЕСТАНОВКИ | ВРЕМЯ (мс)\n";
   std::cout << std::string(kLineLengthLong, '-') << "\n";
 
   // Тестируем для каждого размера
@@ -422,8 +406,7 @@ void testMultipleSizes(size_t baseSize) {
       arr = new int[size];
       fillRandom(arr, size);
     } catch (const std::bad_alloc &e) {
-      std::cerr << "Ошибка выделения памяти для размера " << size << ": "
-                << e.what() << std::endl;
+      std::cerr << "Ошибка выделения памяти для размера " << size << ": " << e.what() << std::endl;
       continue;
     }
 
@@ -442,11 +425,10 @@ void testMultipleSizes(size_t baseSize) {
       if (arrCopy != nullptr) {
         SortStats stats = selectionSort(arrCopy, size, true);
 
-        std::cout << "       | " << std::setw(kTableWidthMethod) << std::left
-                  << "Выбором"
-                  << "| " << std::setw(kTableWidthComparisons) << stats.comparisons
-                  << "| " << std::setw(kTableWidthSwaps) << stats.swaps << "| "
-                  << std::fixed << std::setprecision(3) << stats.time_ms << "\n";
+        std::cout << "       | " << std::setw(kTableWidthMethod) << std::left << "Выбором"
+                  << "| " << std::setw(kTableWidthComparisons) << stats.comparisons << "| "
+                  << std::setw(kTableWidthSwaps) << stats.swaps << "| " << std::fixed << std::setprecision(3)
+                  << stats.time_ms << "\n";
 
         delete[] arrCopy;
       }
@@ -458,11 +440,10 @@ void testMultipleSizes(size_t baseSize) {
       if (arrCopy != nullptr) {
         SortStats stats = bubbleSort(arrCopy, size, true);
 
-        std::cout << "       | " << std::setw(kTableWidthMethod) << std::left
-                  << "Пузырьком"
-                  << "| " << std::setw(kTableWidthComparisons) << stats.comparisons
-                  << "| " << std::setw(kTableWidthSwaps) << stats.swaps << "| "
-                  << std::fixed << std::setprecision(3) << stats.time_ms << "\n";
+        std::cout << "       | " << std::setw(kTableWidthMethod) << std::left << "Пузырьком"
+                  << "| " << std::setw(kTableWidthComparisons) << stats.comparisons << "| "
+                  << std::setw(kTableWidthSwaps) << stats.swaps << "| " << std::fixed << std::setprecision(3)
+                  << stats.time_ms << "\n";
 
         delete[] arrCopy;
       }
@@ -474,11 +455,10 @@ void testMultipleSizes(size_t baseSize) {
       if (arrCopy != nullptr) {
         SortStats stats = quickSort(arrCopy, size, true);
 
-        std::cout << "       | " << std::setw(kTableWidthMethod) << std::left
-                  << "Быстрая"
-                  << "| " << std::setw(kTableWidthComparisons) << stats.comparisons
-                  << "| " << std::setw(kTableWidthSwaps) << stats.swaps << "| "
-                  << std::fixed << std::setprecision(3) << stats.time_ms << "\n";
+        std::cout << "       | " << std::setw(kTableWidthMethod) << std::left << "Быстрая"
+                  << "| " << std::setw(kTableWidthComparisons) << stats.comparisons << "| "
+                  << std::setw(kTableWidthSwaps) << stats.swaps << "| " << std::fixed << std::setprecision(3)
+                  << stats.time_ms << "\n";
 
         delete[] arrCopy;
       }
@@ -508,24 +488,21 @@ void Assembling() {
     std::cout << std::string(kLineLengthLong, '-') << "\n";
 
     std::cout << "\nВведите БАЗОВЫЙ размер массива (например, 2, 5, 10):\n";
-    std::cout << "Программа автоматически протестирует размеры: N, N*10, "
-                 "N*100, N*1000\n";
+    std::cout << "Программа автоматически протестирует размеры: N, N*10, N*100, N*1000\n";
     std::cout << "Базовый размер: ";
 
     size_t baseSize = getValidInput("");
 
     if (baseSize > SIZE_MAX / kLargeMultiplier) {
       std::cout << "\nВНИМАНИЕ: Запрашиваемый размер слишком большой.\n"
-                << "   Максимально допустимый базовый размер: "
-                << SIZE_MAX / kLargeMultiplier << "\n";
+                << "   Максимально допустимый базовый размер: " << SIZE_MAX / kLargeMultiplier << "\n";
       continueProgram = askToContinue();
       continue;
     }
 
     if (baseSize > kLargeBaseSizeWarning) {
       char confirm = 0;
-      std::cout << "\nВНИМАНИЕ: Максимальный тестовый размер будет "
-                << baseSize * kLargeMultiplier
+      std::cout << "\nВНИМАНИЕ: Максимальный тестовый размер будет " << baseSize * kLargeMultiplier
                 << " элементов.\n   Это может занять много времени и памяти.\n"
                 << "   Продолжить? (y/n): ";
       std::cin >> confirm;
