@@ -5,10 +5,10 @@
 #include <iomanip>
 #include <iostream>
 #include <limits>
+#include <new>
 #include <random>
 #include <string>
 #include <vector>
-#include <new>
 
 namespace {
 
@@ -184,8 +184,7 @@ int* copyArray(const int* source, size_t size) {
             copy[i] = source[i];
         }
     } catch (const std::bad_alloc& e) {
-        std::cerr << "Ошибка выделения памяти для массива размером "
-                  << size << ": " << e.what() << std::endl;
+        std::cerr << "Ошибка выделения памяти для массива размером " << size << ": " << e.what() << std::endl;
         return nullptr;
     }
     return copy;
@@ -406,8 +405,7 @@ void testMultipleSizes(size_t baseSize) {
             arr = new int[size];
             fillRandom(arr, size);
         } catch (const std::bad_alloc& e) {
-            std::cerr << "Ошибка выделения памяти для размера " << size
-                      << ": " << e.what() << std::endl;
+            std::cerr << "Ошибка выделения памяти для размера " << size << ": " << e.what() << std::endl;
             continue;
         }
 
@@ -427,9 +425,8 @@ void testMultipleSizes(size_t baseSize) {
                 SortStats stats = selectionSort(arrCopy, size, true);
 
                 std::cout << "       | " << std::setw(kTableWidthMethod) << std::left << "Выбором"
-                          << "| " << std::setw(kTableWidthComparisons) << stats.comparisons
-                          << "| " << std::setw(kTableWidthSwaps) << stats.swaps << "| " << std::fixed
-                          << std::setprecision(3) << stats.time_ms << "\n";
+                          << "| " << std::setw(kTableWidthComparisons) << stats.comparisons << "| " << std::setw(kTableWidthSwaps) << stats.swaps
+                          << "| " << std::fixed << std::setprecision(3) << stats.time_ms << "\n";
 
                 delete[] arrCopy;
             }
@@ -442,9 +439,8 @@ void testMultipleSizes(size_t baseSize) {
                 SortStats stats = bubbleSort(arrCopy, size, true);
 
                 std::cout << "       | " << std::setw(kTableWidthMethod) << std::left << "Пузырьком"
-                          << "| " << std::setw(kTableWidthComparisons) << stats.comparisons
-                          << "| " << std::setw(kTableWidthSwaps) << stats.swaps << "| " << std::fixed
-                          << std::setprecision(3) << stats.time_ms << "\n";
+                          << "| " << std::setw(kTableWidthComparisons) << stats.comparisons << "| " << std::setw(kTableWidthSwaps) << stats.swaps
+                          << "| " << std::fixed << std::setprecision(3) << stats.time_ms << "\n";
 
                 delete[] arrCopy;
             }
@@ -457,9 +453,8 @@ void testMultipleSizes(size_t baseSize) {
                 SortStats stats = quickSort(arrCopy, size, true);
 
                 std::cout << "       | " << std::setw(kTableWidthMethod) << std::left << "Быстрая"
-                          << "| " << std::setw(kTableWidthComparisons) << stats.comparisons
-                          << "| " << std::setw(kTableWidthSwaps) << stats.swaps << "| " << std::fixed
-                          << std::setprecision(3) << stats.time_ms << "\n";
+                          << "| " << std::setw(kTableWidthComparisons) << stats.comparisons << "| " << std::setw(kTableWidthSwaps) << stats.swaps
+                          << "| " << std::fixed << std::setprecision(3) << stats.time_ms << "\n";
 
                 delete[] arrCopy;
             }
@@ -496,16 +491,14 @@ void Assembling() {
 
         if (baseSize > SIZE_MAX / kLargeMultiplier) {
             std::cout << "\n⚠️  ВНИМАНИЕ: Запрашиваемый размер слишком большой.\n"
-                      << "   Максимально допустимый базовый размер: "
-                      << SIZE_MAX / kLargeMultiplier << "\n";
+                      << "   Максимально допустимый базовый размер: " << SIZE_MAX / kLargeMultiplier << "\n";
             continueProgram = askToContinue();
             continue;
         }
 
         if (baseSize > kLargeBaseSizeWarning) {
             char confirm = 0;
-            std::cout << "\n⚠️  ВНИМАНИЕ: Максимальный тестовый размер будет "
-                      << baseSize * kLargeMultiplier
+            std::cout << "\n⚠️  ВНИМАНИЕ: Максимальный тестовый размер будет " << baseSize * kLargeMultiplier
                       << " элементов.\n   Это может занять много времени и памяти.\n"
                       << "   Продолжить? (y/n): ";
             std::cin >> confirm;
