@@ -1,13 +1,12 @@
 #include "sorting.hpp"
-#include <iostream>
-#include <iomanip>
-#include <random>
 #include <algorithm>
-#include <string>
-#include <cstddef>
-#include <limits>
 #include <chrono>
-
+#include <cstddef>
+#include <iomanip>
+#include <iostream>
+#include <limits>
+#include <random>
+#include <string>
 
 namespace {
 
@@ -24,9 +23,11 @@ void printArray(T* arr, size_t size) {
     size_t printSize = (size < 20) ? size : 20;
     for (size_t i = 0; i < printSize; ++i) {
         std::cout << std::setw(3) << arr[i];
-        if (i < printSize - 1) std::cout << " ";
+        if (i < printSize - 1)
+            std::cout << " ";
     }
-    if (size > 20) std::cout << " ...";
+    if (size > 20)
+        std::cout << " ...";
     std::cout << "]";
 }
 
@@ -77,7 +78,8 @@ SortStats bubbleSort(T* arr, size_t size, bool ascending = true) {
             }
         }
 
-        if (!swapped) break;
+        if (!swapped)
+            break;
     }
 
     auto end = std::chrono::high_resolution_clock::now();
@@ -189,7 +191,7 @@ size_t getValidInput(const std::string& prompt) {
     }
 }
 
-} // анонимное пространство имен
+}  // namespace
 
 namespace AssemblingSorting {
 
@@ -209,7 +211,7 @@ bool askToContinue() {
 
 // Тестирование на статических массивах (5-10 элементов)
 void testStaticArrays() {
-    const size_t STATIC_SIZE = 10; // Фиксированный размер статического массива
+    const size_t STATIC_SIZE = 10;  // Фиксированный размер статического массива
 
     std::cout << "\n" << std::string(70, '=') << "\n";
     std::cout << "ЧАСТЬ 1: ТЕСТИРОВАНИЕ НА СТАТИЧЕСКОМ МАССИВЕ (" << STATIC_SIZE << " элементов)\n";
@@ -248,24 +250,21 @@ void testStaticArrays() {
     SortStats stats1 = selectionSort(arrSelection1, STATIC_SIZE, true);
     std::cout << "   Массив: ";
     printArray(arrSelection1, STATIC_SIZE);
-    std::cout << "\n   Сравнения: " << stats1.comparisons
-              << ", Перестановки: " << stats1.swaps << "\n\n";
+    std::cout << "\n   Сравнения: " << stats1.comparisons << ", Перестановки: " << stats1.swaps << "\n\n";
 
     // 2. Уже отсортированный -> по возрастанию (заново)
     std::cout << "2. Отсортированный массив -> по возрастанию (заново):\n";
     SortStats stats2 = selectionSort(arrSelection2, STATIC_SIZE, true);
     std::cout << "   Массив: ";
     printArray(arrSelection2, STATIC_SIZE);
-    std::cout << "\n   Сравнения: " << stats2.comparisons
-              << ", Перестановки: " << stats2.swaps << "\n\n";
+    std::cout << "\n   Сравнения: " << stats2.comparisons << ", Перестановки: " << stats2.swaps << "\n\n";
 
     // 3. Отсортированный -> по убыванию
     std::cout << "3. Отсортированный массив -> по убыванию:\n";
     SortStats stats3 = selectionSort(arrSelection3, STATIC_SIZE, false);
     std::cout << "   Массив: ";
     printArray(arrSelection3, STATIC_SIZE);
-    std::cout << "\n   Сравнения: " << stats3.comparisons
-              << ", Перестановки: " << stats3.swaps << "\n\n";
+    std::cout << "\n   Сравнения: " << stats3.comparisons << ", Перестановки: " << stats3.swaps << "\n\n";
 
     // Тестируем сортировку пузырьком (ОСНОВНОЕ ЗАДАНИЕ)
     std::cout << "АЛГОРИТМ: СОРТИРОВКА ПУЗЫРЬКОМ (основное задание)\n";
@@ -276,24 +275,21 @@ void testStaticArrays() {
     SortStats stats4 = bubbleSort(arrBubble1, STATIC_SIZE, true);
     std::cout << "   Массив: ";
     printArray(arrBubble1, STATIC_SIZE);
-    std::cout << "\n   Сравнения: " << stats4.comparisons
-              << ", Перестановки: " << stats4.swaps << "\n\n";
+    std::cout << "\n   Сравнения: " << stats4.comparisons << ", Перестановки: " << stats4.swaps << "\n\n";
 
     // 2. Уже отсортированный -> по возрастанию (заново)
     std::cout << "2. Отсортированный массив -> по возрастанию (заново):\n";
     SortStats stats5 = bubbleSort(arrBubble2, STATIC_SIZE, true);
     std::cout << "   Массив: ";
     printArray(arrBubble2, STATIC_SIZE);
-    std::cout << "\n   Сравнения: " << stats5.comparisons
-              << ", Перестановки: " << stats5.swaps << "\n\n";
+    std::cout << "\n   Сравнения: " << stats5.comparisons << ", Перестановки: " << stats5.swaps << "\n\n";
 
     // 3. Отсортированный -> по убыванию
     std::cout << "3. Отсортированный массив -> по убыванию:\n";
     SortStats stats6 = bubbleSort(arrBubble3, STATIC_SIZE, false);
     std::cout << "   Массив: ";
     printArray(arrBubble3, STATIC_SIZE);
-    std::cout << "\n   Сравнения: " << stats6.comparisons
-              << ", Перестановки: " << stats6.swaps << "\n\n";
+    std::cout << "\n   Сравнения: " << stats6.comparisons << ", Перестановки: " << stats6.swaps << "\n\n";
 
     // Тестируем быструю сортировку (ДОПОЛНИТЕЛЬНОЕ ЗАДАНИЕ)
     std::cout << "АЛГОРИТМ: БЫСТРАЯ СОРТИРОВКА (дополнительное задание)\n";
@@ -304,24 +300,21 @@ void testStaticArrays() {
     SortStats stats7 = quickSort(arrQuick1, STATIC_SIZE, true);
     std::cout << "   Массив: ";
     printArray(arrQuick1, STATIC_SIZE);
-    std::cout << "\n   Сравнения: " << stats7.comparisons
-              << ", Перестановки: " << stats7.swaps << "\n\n";
+    std::cout << "\n   Сравнения: " << stats7.comparisons << ", Перестановки: " << stats7.swaps << "\n\n";
 
     // 2. Уже отсортированный -> по возрастанию (заново)
     std::cout << "2. Отсортированный массив -> по возрастанию (заново):\n";
     SortStats stats8 = quickSort(arrQuick2, STATIC_SIZE, true);
     std::cout << "   Массив: ";
     printArray(arrQuick2, STATIC_SIZE);
-    std::cout << "\n   Сравнения: " << stats8.comparisons
-              << ", Перестановки: " << stats8.swaps << "\n\n";
+    std::cout << "\n   Сравнения: " << stats8.comparisons << ", Перестановки: " << stats8.swaps << "\n\n";
 
     // 3. Отсортированный -> по убыванию
     std::cout << "3. Отсортированный массив -> по убыванию:\n";
     SortStats stats9 = quickSort(arrQuick3, STATIC_SIZE, false);
     std::cout << "   Массив: ";
     printArray(arrQuick3, STATIC_SIZE);
-    std::cout << "\n   Сравнения: " << stats9.comparisons
-              << ", Перестановки: " << stats9.swaps << "\n\n";
+    std::cout << "\n   Сравнения: " << stats9.comparisons << ", Перестановки: " << stats9.swaps << "\n\n";
 
     std::cout << std::string(70, '=') << "\n";
     std::cout << "ТЕСТИРОВАНИЕ СТАТИЧЕСКИХ МАССИВОВ ЗАВЕРШЕНО\n";
@@ -343,7 +336,8 @@ void testMultipleSizes(size_t baseSize) {
     std::cout << "ТЕСТИРОВАНИЕ НА РАЗМЕРАХ: ";
     for (size_t i = 0; i < sizes.size(); i++) {
         std::cout << sizes[i];
-        if (i < sizes.size() - 1) std::cout << ", ";
+        if (i < sizes.size() - 1)
+            std::cout << ", ";
     }
     std::cout << "\n" << std::string(70, '=') << "\n";
 
@@ -375,9 +369,8 @@ void testMultipleSizes(size_t baseSize) {
             SortStats stats = selectionSort(arrCopy, size, true);
 
             std::cout << "       | " << std::setw(13) << std::left << "Выбором"
-                      << "| " << std::setw(11) << stats.comparisons
-                      << "| " << std::setw(13) << stats.swaps
-                      << "| " << std::fixed << std::setprecision(3) << stats.time_ms << "\n";
+                      << "| " << std::setw(11) << stats.comparisons << "| " << std::setw(13) << stats.swaps << "| " << std::fixed
+                      << std::setprecision(3) << stats.time_ms << "\n";
 
             delete[] arrCopy;
         }
@@ -388,9 +381,8 @@ void testMultipleSizes(size_t baseSize) {
             SortStats stats = bubbleSort(arrCopy, size, true);
 
             std::cout << "       | " << std::setw(13) << std::left << "Пузырьком"
-                      << "| " << std::setw(11) << stats.comparisons
-                      << "| " << std::setw(13) << stats.swaps
-                      << "| " << std::fixed << std::setprecision(3) << stats.time_ms << "\n";
+                      << "| " << std::setw(11) << stats.comparisons << "| " << std::setw(13) << stats.swaps << "| " << std::fixed
+                      << std::setprecision(3) << stats.time_ms << "\n";
 
             delete[] arrCopy;
         }
@@ -401,9 +393,8 @@ void testMultipleSizes(size_t baseSize) {
             SortStats stats = quickSort(arrCopy, size, true);
 
             std::cout << "       | " << std::setw(13) << std::left << "Быстрая"
-                      << "| " << std::setw(11) << stats.comparisons
-                      << "| " << std::setw(13) << stats.swaps
-                      << "| " << std::fixed << std::setprecision(3) << stats.time_ms << "\n";
+                      << "| " << std::setw(11) << stats.comparisons << "| " << std::setw(13) << stats.swaps << "| " << std::fixed
+                      << std::setprecision(3) << stats.time_ms << "\n";
 
             delete[] arrCopy;
         }
@@ -462,8 +453,7 @@ void Assembling() {
     std::cout << std::string(70, '=') << "\n";
 }
 
-}
-
+}  // namespace AssemblingSorting
 
 // #include "sorting.hpp"
 // #include <iostream>
@@ -898,8 +888,6 @@ void Assembling() {
 
 // }
 
-
-
 // // #include "sorting.hpp"
 // // #include <iostream>
 // // #include <iomanip>
@@ -1308,10 +1296,6 @@ void Assembling() {
 
 // // }
 
-
-
-
-
 // // // #include "sorting.hpp"
 // // // #include <iostream>
 // // // #include <iomanip>
@@ -1643,10 +1627,6 @@ void Assembling() {
 
 // // // } // namespace AssemblingSorting
 
-
-
-
-
 // // // #include "sorting.hpp"
 // // // #include <iostream>
 // // // #include <iomanip>
@@ -1793,7 +1773,6 @@ void Assembling() {
 // // // template SortStats quickSort<int>(int* arr, size_t size, bool ascending);
 
 // // // // Функция для проверки ввода числа
-
 
 // // // size_t getValidInput(const std::string& prompt) {
 // // //     size_t value;
@@ -1976,7 +1955,6 @@ void Assembling() {
 
 // // //         std::cout << "\nРЕЗУЛЬТАТЫ СОРТИРОВКИ (" << dynamicSize << " элементов)\n";
 
-
 // // //         std::cout << "============================================================\n";
 // // //         std::cout << "Метод          Направление    Сравнения      Перестановки\n";
 // // //         std::cout << "------------------------------------------------------------\n";
@@ -2021,15 +1999,10 @@ void Assembling() {
 
 // // // } // namespace AssemblingSorting
 
-
-
-
-
 // // // // #include "sorting.hpp"
 // // // // #include <iostream>
 // // // // #include <iomanip>
 // // // // #include <random>
-
 
 // // // // #include <cstddef>
 
@@ -2336,8 +2309,6 @@ void Assembling() {
 // // // // }
 
 // // // // } // namespace AssemblingSorting
-
-
 
 // // // // // #include "sorting.hpp"
 // // // // // #include <iostream>
@@ -2656,9 +2627,6 @@ void Assembling() {
 // // // // // }
 
 // // // // // } // namespace AssemblingSorting
-
-
-
 
 // // // // // // #include "sorting.hpp"
 // // // // // // #include <iostream>
@@ -2980,9 +2948,6 @@ void Assembling() {
 // // // // // // }
 
 // // // // // // } // namespace AssemblingSorting
-
-
-
 
 // // // // // // // #include "sorting.hpp"
 // // // // // // // #include <iostream>
@@ -3322,10 +3287,6 @@ void Assembling() {
 // // // // // // // }
 
 // // // // // // // } // namespace AssemblingSorting
-
-
-
-
 
 // // // // // // // // #include "sorting.hpp"
 // // // // // // // // #include <iostream>
@@ -3681,10 +3642,6 @@ void Assembling() {
 
 // // // // // // // // } // namespace AssemblingSorting
 
-
-
-
-
 // // // // // // // // // #include "sorting.hpp"
 // // // // // // // // // #include <iostream>
 // // // // // // // // // #include <iomanip>
@@ -4039,8 +3996,6 @@ void Assembling() {
 
 // // // // // // // // // } // namespace AssemblingSorting
 
-
-
 // // // // // // // // // // #include "sorting.hpp"
 // // // // // // // // // // #include <iostream>
 // // // // // // // // // // #include <iomanip>
@@ -4381,8 +4336,6 @@ void Assembling() {
 // // // // // // // // // // }
 
 // // // // // // // // // // } // namespace AssemblingSorting
-
-
 
 // // // // // // // // // // // #include "sorting.hpp"
 // // // // // // // // // // // #include <iostream>

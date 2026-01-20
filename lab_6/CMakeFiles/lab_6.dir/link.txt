@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/lab_6.dir/main.cpp.o CMakeFiles/lab_6.dir/integral.cpp.o -o lab_6 
