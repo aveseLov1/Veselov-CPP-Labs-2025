@@ -8,14 +8,15 @@ int main() {
   std::cout << "ЧАСТЬ ПЕРВАЯ: Динамическая матрица\n";
   std::cout << "========================================\n\n";
 
-  int numberOfRows, numberOfColumns;
+  std::size_t numberOfRows = 0;
+  std::size_t numberOfColumns = 0;
 
   // Ввод размеров матрицы
   std::cout << "Введите количество строк и столбцов матрицы: ";
   std::cin >> numberOfRows >> numberOfColumns;
 
   // Проверка ввода
-  if (std::cin.fail() || numberOfRows <= 0 || numberOfColumns <= 0) {
+  if (std::cin.fail() || numberOfRows == 0 || numberOfColumns == 0) {
     std::cerr << "Ошибка: некорректные размеры матрицы. "
               << "Должны быть положительные числа.\n";
     std::cin.clear();
@@ -26,29 +27,25 @@ int main() {
   // Создание динамической матрицы
   double **twoDimensionalDynamicMatrix = nullptr;
   try {
-    twoDimensionalDynamicMatrix = MatrixModule::allocateMatrix(
-        static_cast<std::size_t>(numberOfRows),
-        static_cast<std::size_t>(numberOfColumns));
+    twoDimensionalDynamicMatrix =
+        MatrixModule::allocateMatrix(numberOfRows, numberOfColumns);
   } catch (const std::bad_alloc &e) {
     std::cerr << "Ошибка выделения памяти: " << e.what() << "\n";
     return 1;
   }
 
   // Заполнение матрицы
-  MatrixModule::fillMatrix(twoDimensionalDynamicMatrix,
-                           static_cast<std::size_t>(numberOfRows),
-                           static_cast<std::size_t>(numberOfColumns));
+  MatrixModule::fillMatrix(twoDimensionalDynamicMatrix, numberOfRows,
+                           numberOfColumns);
 
   // Вывод матрицы в разных форматах
   std::cout << "\nМатрица в фиксированном формате (точность 4):\n";
-  MatrixModule::printDynamicMatrix(
-      twoDimensionalDynamicMatrix, static_cast<std::size_t>(numberOfRows),
-      static_cast<std::size_t>(numberOfColumns), 4, false, 80);
+  MatrixModule::printDynamicMatrix(twoDimensionalDynamicMatrix, numberOfRows,
+                                   numberOfColumns, 4, false, 80);
 
   std::cout << "\n\nМатрица в научном формате (точность 6):\n";
-  MatrixModule::printDynamicMatrix(
-      twoDimensionalDynamicMatrix, static_cast<std::size_t>(numberOfRows),
-      static_cast<std::size_t>(numberOfColumns), 6, true, 80);
+  MatrixModule::printDynamicMatrix(twoDimensionalDynamicMatrix, numberOfRows,
+                                   numberOfColumns, 6, true, 80);
 
   // Часть вторая: Работа со статической матрицей
   std::cout << "\n\n========================================\n";
@@ -56,18 +53,18 @@ int main() {
   std::cout << "========================================\n\n";
 
   // Создание и заполнение статической матрицы
-  const int STATIC_SIZE = 10;
+  const std::size_t STATIC_SIZE = 10;
   double staticMatrix[STATIC_SIZE][STATIC_SIZE];
 
-  for (int i = 0; i < STATIC_SIZE; ++i) {
-    for (int j = 0; j < STATIC_SIZE; ++j) {
-      staticMatrix[i][j] = i * 10.0 + j;
+  for (std::size_t i = 0; i < STATIC_SIZE; ++i) {
+    for (std::size_t j = 0; j < STATIC_SIZE; ++j) {
+      staticMatrix[i][j] = static_cast<double>(i) * 10.0 + static_cast<double>(j);
     }
   }
 
   // Создание вспомогательного массива указателей на строки
   const double *pointerArray[STATIC_SIZE];
-  for (int i = 0; i < STATIC_SIZE; ++i) {
+  for (std::size_t i = 0; i < STATIC_SIZE; ++i) {
     pointerArray[i] = staticMatrix[i];
   }
 
@@ -167,8 +164,7 @@ int main() {
                "массивов!\n";
 
   // Освобождение памяти динамической матрицы
-  MatrixModule::freeMatrix(twoDimensionalDynamicMatrix,
-                           static_cast<std::size_t>(numberOfRows));
+  MatrixModule::freeMatrix(twoDimensionalDynamicMatrix, numberOfRows);
 
   return 0;
 }
