@@ -1,18 +1,19 @@
 #include "cipher_Caesar.hpp"
-#include <iostream>
-#include <fstream>
-#include <cstring>
+#include <algorithm>
 #include <cctype>
 #include <cstdlib>
-#include <limits>
-#include <algorithm>
+#include <cstring>
+#include <fstream>
 #include <iomanip>
+#include <iostream>
+#include <limits>
 
 namespace cipher {
 
 // Обертка для безопасного копирования строк
 void safe_strcpy(char* dest, const char* src, size_t dest_size) {
-    if (dest_size == 0) return;
+    if (dest_size == 0)
+        return;
 
     size_t i = 0;
     while (i < dest_size - 1 && src[i] != '\0') {
@@ -37,11 +38,12 @@ int read_words(const char* filename, Word words[]) {
     }
 
     int count = 0;
-    char line[512]; // Увеличил размер буфера
+    char line[512];  // Увеличил размер буфера
 
     while (file.getline(line, sizeof(line)) && count < MAX_WORDS) {
         // Если строка пустая - пропускаем
-        if (line[0] == '\0') continue;
+        if (line[0] == '\0')
+            continue;
 
         // Обработка ошибки при чтении длинной строки
         if (file.fail() && !file.eof()) {
@@ -130,11 +132,7 @@ int read_words(const char* filename, Word words[]) {
 }
 
 // Обработка файла
-bool process_file(const char* input_file,
-                  const char* output_file,
-                  const Word words[],
-                  int word_count,
-                  bool encode) {
+bool process_file(const char* input_file, const char* output_file, const Word words[], int word_count, bool encode) {
     if (word_count == 0) {
         std::cerr << "Ошибка: Нет слов в блокноте\n";
         return false;
@@ -211,7 +209,9 @@ bool parse_arguments(int argc, char* argv[], FilePaths& paths) {
         std::cout << "Использование:\n";
         std::cout << "  " << argv[0] << " <исходный_файл> <блокнот> <зашифрованный_файл> <расшифрованный_файл>\n";
         std::cout << "(Рекомендуется:)\n";
-        std::cout << "  " << argv[0] << " /home/stud.BMSTU/filesCFR/first.txt /home/stud.BMSTU/filesCFR/code.txt /home/stud.BMSTU/filesCFR/coded.txt /home/stud.BMSTU/filesCFR/decoded.txt\n";
+        std::cout << "  " << argv[0]
+                  << " /home/stud.BMSTU/filesCFR/first.txt /home/stud.BMSTU/filesCFR/code.txt /home/stud.BMSTU/filesCFR/coded.txt "
+                     "/home/stud.BMSTU/filesCFR/decoded.txt\n";
         return false;
     }
 
@@ -262,7 +262,7 @@ MenuOption show_menu() {
         clear_input();
         return MenuOption::EXIT;
     }
-    clear_input(); // Очищаем буфер после чтения числа
+    clear_input();  // Очищаем буфер после чтения числа
 
     if (choice < 1 || choice > 5) {
         return MenuOption::EXIT;
@@ -289,10 +289,10 @@ bool show_stats(const char* input, const char* notepad, char search_char) {
     }
 
     // Массивы для статистики
-    int variant_counts[ASCII_SIZE] = {0}; // Сколько раз символ закодировался в каждый вариант
-    int total_encodings = 0; // Общее количество кодирований символа
-    int total_chars = 0; // Всего символов в файле
-    int total_ascii_chars = 0; // Всего ASCII символов в файле
+    int variant_counts[ASCII_SIZE] = {0};  // Сколько раз символ закодировался в каждый вариант
+    int total_encodings = 0;               // Общее количество кодирований символа
+    int total_chars = 0;                   // Всего символов в файле
+    int total_ascii_chars = 0;             // Всего ASCII символов в файле
     unsigned char search_uchar = static_cast<unsigned char>(search_char);
 
     // Читаем файл и анализируем
@@ -370,16 +370,13 @@ bool show_stats(const char* input, const char* notepad, char search_char) {
         // Выводим все варианты кодирования
         if (unique_variants > 0) {
             std::cout << "\nВарианты кодирования:\n";
-            std::cout << std::setw(10) << "Символ"
-                     << std::setw(15) << "ASCII код"
-                     << std::setw(20) << "Количество"
-                     << std::setw(15) << "Процент" << "\n";
+            std::cout << std::setw(10) << "Символ" << std::setw(15) << "ASCII код" << std::setw(20) << "Количество" << std::setw(15) << "Процент"
+                      << "\n";
             std::cout << std::string(60, '-') << "\n";
 
             for (int i = 0; i < ASCII_SIZE; ++i) {
                 if (variant_counts[i] > 0) {
-                    double percentage = (total_encodings > 0) ?
-                        (variant_counts[i] * 100.0 / total_encodings) : 0.0;
+                    double percentage = (total_encodings > 0) ? (variant_counts[i] * 100.0 / total_encodings) : 0.0;
 
                     std::string char_display;
                     char encoded_char = static_cast<char>(i);
@@ -398,10 +395,8 @@ bool show_stats(const char* input, const char* notepad, char search_char) {
                         char_display = "[код " + std::to_string(i) + "]";
                     }
 
-                    std::cout << std::setw(10) << char_display
-                             << std::setw(15) << i
-                             << std::setw(20) << variant_counts[i]
-                             << std::setw(14) << std::fixed << std::setprecision(2) << percentage << "%\n";
+                    std::cout << std::setw(10) << char_display << std::setw(15) << i << std::setw(20) << variant_counts[i] << std::setw(14)
+                              << std::fixed << std::setprecision(2) << percentage << "%\n";
                 }
             }
         }
@@ -574,11 +569,7 @@ bool decode_file(const char* input, const char* notepad, const char* output) {
     return (word_count > 0) && process_file(input, output, words, word_count, false);
 }
 
-} // namespace cipher
-
-
-
-
+}  // namespace cipher
 
 // #include "cipher_Caesar.hpp"
 // #include <iostream>

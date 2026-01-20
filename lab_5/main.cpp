@@ -1,9 +1,10 @@
-#include "cipher_Caesar.hpp"
-#include <iostream>
 #include <cstdlib>
+#include <iostream>
+#include "cipher_Caesar.hpp"
 
 // КОМАНДА ДЛЯ ЗАПУСКА:
-// ./Lab_5 /home/stud.BMSTU/filesCFR/first.txt /home/stud.BMSTU/filesCFR/code.txt /home/stud.BMSTU/filesCFR/coded.txt /home/stud.BMSTU/filesCFR/decoded.txt
+// ./Lab_5 /home/stud.BMSTU/filesCFR/first.txt /home/stud.BMSTU/filesCFR/code.txt /home/stud.BMSTU/filesCFR/coded.txt
+// /home/stud.BMSTU/filesCFR/decoded.txt
 int main(int argc, char* argv[]) {
     std::cout << "Программа шифрования Цезаря\n";
     std::cout << "=============================\n";
@@ -33,10 +34,6 @@ int main(int argc, char* argv[]) {
     std::cout << "\nПрограмма успешно завершена\n";
     return EXIT_SUCCESS;
 }
-
-
-
-
 
 // #include "cipher_Caesar.hpp"
 // #include <iostream>

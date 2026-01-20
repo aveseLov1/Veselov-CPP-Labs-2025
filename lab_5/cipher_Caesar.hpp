@@ -45,18 +45,12 @@ bool parse_arguments(int argc, char* argv[], FilePaths& paths);
 
 // Вспомогательные функции
 int read_words(const char* filename, Word words[]);
-bool process_file(const char* input_file, const char* output_file,
-                  const Word words[], int word_count, bool encode);
+bool process_file(const char* input_file, const char* output_file, const Word words[], int word_count, bool encode);
 void clear_input();
 
-} // namespace cipher
+}  // namespace cipher
 
-#endif // CIPHER_CAESAR_HPP
-
-
-
-
-
+#endif  // CIPHER_CAESAR_HPP
 
 // #ifndef CIPHER_HPP
 // #define CIPHER_HPP
