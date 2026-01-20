@@ -8,23 +8,21 @@ int main() {
     double b = 1.0;
 
     // Массив значений точности
-    double epsilons[] = { 0.01, 0.001, 0.0001, 0.00001, 0.000001 };
+    double epsilons[] = {0.01, 0.001, 0.0001, 0.00001, 0.000001};
     int num_eps = 5;
 
     // Массив указателей на функции
-    TPF functions[] = { f1, f2, f3, f4 };
+    TPF functions[] = {f1, f2, f3, f4};
     char* func_names[] = {
         new char[2]{'x', '\0'},
-        new char[9]{'s','i','n','(','2','2','x',')','\0'},
-        new char[4]{'x','^','4','\0'},
-        new char[9]{'a','r','c','t','g','(','x',')','\0'}
+         new char[9]{'s', 'i', 'n', '(', '2', '2', 'x', ')', '\0'},
+         new char[4]{'x', '^', '4', '\0'},
+        new char[9]{'a', 'r', 'c', 't', 'g', '(', 'x', ')', '\0'}
     };
     int num_funcs = 4;
 
     // Массив указателей на функции точных значений
-    double (*exact_funcs[])(double, double) = {
-        exact_integral_f1, exact_integral_f2, exact_integral_f3, exact_integral_f4
-    };
+    double (*exact_funcs[])(double, double) = {exact_integral_f1, exact_integral_f2, exact_integral_f3, exact_integral_f4};
 
     // Метод прямоугольников
     cout << "==================================================" << endl;

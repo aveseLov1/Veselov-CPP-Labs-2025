@@ -2,9 +2,9 @@
 #define INTEGRAL_H
 
 #include <cmath>
-#include <iostream>
-#include <iomanip>
 #include <cstring>
+#include <iomanip>
+#include <iostream>
 #include <sstream>
 
 // Тип указателя на функцию
@@ -12,10 +12,10 @@ typedef double (*TPF)(double);
 
 // Структура для хранения результатов
 struct resultToPrint {
-    char* name;      // название функции
-    double i_sum;    // численно рассчитанный интеграл
-    double i_toch;   // точное значение интеграла
-    int n;           // число разбиений при достижении точности
+    char* name;     // название функции
+    double i_sum;   // численно рассчитанный интеграл
+    double i_toch;  // точное значение интеграла
+    int n;          // число разбиений при достижении точности
 };
 
 // Подынтегральные функции
@@ -39,4 +39,4 @@ double integrationByTrapezoidal(TPF f, double a, double b, double eps, int& n);
 // Функция печати таблицы
 void printTabl(resultToPrint* i_prn, int countRowOfTable, double eps);
 
-#endif // INTEGRAL_H
+#endif  // INTEGRAL_H
