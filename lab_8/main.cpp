@@ -138,16 +138,16 @@ class DictionaryManager {
     }
 
     void initializeDefaultDictionary() {
-        addEntry("apple", "яблоко");
-        addEntry("book", "книга");
-        addEntry("cat", "кот");
-        addEntry("dog", "собака");
-        addEntry("house", "дом");
-        addEntry("sun", "солнце");
-        addEntry("moon", "луна");
-        addEntry("water", "вода");
-        addEntry("tree", "дерево");
-        addEntry("friend", "друг");
+        addEntry("apple", "yabloko");
+        addEntry("book", "kniga");
+        addEntry("cat", "kot");
+        addEntry("dog", "sobaka");
+        addEntry("house", "dom");
+        addEntry("sun", "solnce");
+        addEntry("moon", "luna");
+        addEntry("water", "voda");
+        addEntry("tree", "derevo");
+        addEntry("friend", "drug");
     }
 
  public:
