@@ -80,7 +80,7 @@ int main() {
     std::cout << "   - *staticMatrix[0]: разыменование указателя на первую строку дает первый элемент (0)\n\n";
 
     std::cout << "3. std::cout << *(*(staticMatrix+1)) << \"  \" << *B[1] << std::endl;\n";
-    std::cout << "   Результат: " << *(*(staticMatrix+1)) << "  " << *B[1] << std::endl;
+    std::cout << "   Результат: " << *(*(staticMatrix + 1)) << "  " << *B[1] << std::endl;
     std::cout << "   Объяснение:\n";
     std::cout << "   - *(*(staticMatrix+1)): staticMatrix+1 - указатель на вторую строку,\n";
     std::cout << "     разыменование дает адрес первого элемента второй строки,\n";
@@ -88,7 +88,7 @@ int main() {
     std::cout << "   - *B[1]: B[1] - адрес первой строки, разыменование дает B[1][0] (10)\n\n";
 
     std::cout << "4. std::cout << *(staticMatrix[0]+1) << \"  \" << *(*staticMatrix+1) << std::endl;\n";
-    std::cout << "   Результат: " << *(staticMatrix[0]+1) << "  " << *(*staticMatrix+1) << std::endl;
+    std::cout << "   Результат: " << *(staticMatrix[0] + 1) << "  " << *(*staticMatrix + 1) << std::endl;
     std::cout << "   Объяснение:\n";
     std::cout << "   - *(staticMatrix[0]+1): staticMatrix[0]+1 - адрес второго элемента первой строки,\n";
     std::cout << "     разыменование дает staticMatrix[0][1] (1)\n";
