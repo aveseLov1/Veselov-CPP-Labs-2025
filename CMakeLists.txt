@@ -7,12 +7,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 set(SOURCES
-    lab_3/main.cpp
-    lab_3/lab_3_functions.cpp
+    main.cpp
+    lab_3_functions.cpp
 )
 
 set(HEADERS
-    lab_3/lab_3_functions.h
+    lab_3_functions.h
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
