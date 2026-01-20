@@ -426,7 +426,8 @@ void testMultipleSizes(size_t baseSize) {
                 SortStats stats = selectionSort(arrCopy, size, true);
 
                 std::cout << "       | " << std::setw(kTableWidthMethod) << std::left << "Выбором"
-                          << "| " << std::setw(kTableWidthComparisons) << stats.comparisons << "| " << std::setw(kTableWidthSwaps) << stats.swaps
+                          << "| " << std::setw(kTableWidthComparisons) << stats.comparisons
+                          << "| " << std::setw(kTableWidthSwaps) << stats.swaps
                           << "| " << std::fixed << std::setprecision(3) << stats.time_ms << "\n";
 
                 delete[] arrCopy;
@@ -440,7 +441,8 @@ void testMultipleSizes(size_t baseSize) {
                 SortStats stats = bubbleSort(arrCopy, size, true);
 
                 std::cout << "       | " << std::setw(kTableWidthMethod) << std::left << "Пузырьком"
-                          << "| " << std::setw(kTableWidthComparisons) << stats.comparisons << "| " << std::setw(kTableWidthSwaps) << stats.swaps
+                          << "| " << std::setw(kTableWidthComparisons) << stats.comparisons
+                          << "| " << std::setw(kTableWidthSwaps) << stats.swaps
                           << "| " << std::fixed << std::setprecision(3) << stats.time_ms << "\n";
 
                 delete[] arrCopy;
@@ -454,7 +456,8 @@ void testMultipleSizes(size_t baseSize) {
                 SortStats stats = quickSort(arrCopy, size, true);
 
                 std::cout << "       | " << std::setw(kTableWidthMethod) << std::left << "Быстрая"
-                          << "| " << std::setw(kTableWidthComparisons) << stats.comparisons << "| " << std::setw(kTableWidthSwaps) << stats.swaps
+                          << "| " << std::setw(kTableWidthComparisons) << stats.comparisons
+                          << "| " << std::setw(kTableWidthSwaps) << stats.swaps
                           << "| " << std::fixed << std::setprecision(3) << stats.time_ms << "\n";
 
                 delete[] arrCopy;
