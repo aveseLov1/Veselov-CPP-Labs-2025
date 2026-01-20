@@ -1,4 +1,5 @@
 #include "sorting.hpp"
+
 #include <algorithm>
 #include <chrono>
 #include <cstddef>
@@ -373,7 +374,8 @@ void testMultipleSizes(size_t baseSize) {
         // Проверка перед умножением
         if (i + 1 < iterationCount) {
             if (current > SIZE_MAX / kMultiplierBase) {
-                std::cout << "Предупреждение: достигнут максимальный размер, пропуск дальнейшего умножения\n";
+                std::cout << "Предупреждение: достигнут максимальный размер, пропуск "
+                             "дальнейшего умножения\n";
                 break;
             }
             current *= kMultiplierBase;
@@ -391,7 +393,8 @@ void testMultipleSizes(size_t baseSize) {
     std::cout << "\n" << std::string(kLineLengthLong, '=') << "\n";
 
     // Заголовок таблицы
-    std::cout << "\nРАЗМЕР | МЕТОД         | СРАВНЕНИЯ   | ПЕРЕСТАНОВКИ | ВРЕМЯ (мс)\n";
+    std::cout << "\nРАЗМЕР | МЕТОД         | СРАВНЕНИЯ   | ПЕРЕСТАНОВКИ | ВРЕМЯ "
+                 "(мс)\n";
     std::cout << std::string(kLineLengthLong, '-') << "\n";
 
     // Тестируем для каждого размера
@@ -484,7 +487,8 @@ void Assembling() {
         std::cout << std::string(kLineLengthLong, '-') << "\n";
 
         std::cout << "\nВведите БАЗОВЫЙ размер массива (например, 2, 5, 10):\n";
-        std::cout << "Программа автоматически протестирует размеры: N, N*10, N*100, N*1000\n";
+        std::cout << "Программа автоматически протестирует размеры: N, N*10, "
+                     "N*100, N*1000\n";
         std::cout << "Базовый размер: ";
 
         size_t baseSize = getValidInput("");
